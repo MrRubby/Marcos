@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "ban-setting",
-    description: "Get information about the system status",
+    description: "Sets the ban system",
 
     async execute(interaction) {
 
@@ -14,8 +14,8 @@ export const data = {
         let SubCmd = interaction.options.getSubcommand()
 
         switch(SubCmd){
-            case "ayarla": {
-                let rol = interaction.options.getRole("rol");
+            case "set": {
+                let rol = interaction.options.getRole("role");
                 const { banrole_id, bansystem } = await guilds_Schema.findOne({ guild_id: interaction.guild.id }) || { banrole_id: null };
                 await guilds_Schema.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { banrole_id: rol.id, bansystem: true } }, { upsert: true })
                 .then(() => {
@@ -26,7 +26,7 @@ export const data = {
                 })
                 break
             }
-            case "sıfırla": {
+            case "reset": {
                 const { bansystem } = await guilds_Schema.findOne({ guild_id: interaction.guild.id }) || { bansystem: false };
                 if (!bansystem) return interaction.reply({ content: t("bansystem.error", {lng: interaction.locale}) });
                 await guilds_Schema.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { bansystem: false, banrole_id: null } }, { upsert: true })
@@ -48,18 +48,18 @@ export const slash_data = {
     type: 1,
     options:[
         {
-          name:"ayarla",description:"Ban sistemi ayarlar",type:1,options:[
+          name:"set",description:"make an installation",type:1,options:[
             {
-                name:"rol",
-                description:"Ban Yetilisi Rolü (UNUTMA! Bu role sahip kişiler üyeleri yasakla yetkisine sahip olucak!)",
+                name:"role",
+                description:"The Role of the Ban Parent",
                 type:8,
                 required:true
             }
           ]
         },
         {
-            name:"sıfırla",
-            description:"Ban sistemi sıfırlar",
+            name:"reset",
+            description:"Closes the ban system",
             type:1
         }
         

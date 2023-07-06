@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "autorole-setting",
-    description: "Get information about the system status",
+    description: "Sets the automatic role system",
 
     async execute(interaction) {
 
@@ -50,10 +50,10 @@ export const slash_data = {
     type: 1,
     options:[
         {
-          name:"set",description:"Ban sistemi ayarlar",type:1,options:[
+          name:"set",description:"make an installation",type:1,options:[
             {
                 name:"role",
-                description:"Ban Yetilisi Rolü (UNUTMA! Bu role sahip kişiler üyeleri yasakla yetkisine sahip olucak!)",
+                description:"Please specify the role to be assigned to users",
                 type:8,
                 required:true
             }
@@ -61,7 +61,7 @@ export const slash_data = {
         },
         {
             name:"reset",
-            description:"Ban sistemi sıfırlar",
+            description:"Turns off the automatic role system",
             type:1
         }
         

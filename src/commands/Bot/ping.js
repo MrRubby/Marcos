@@ -4,8 +4,7 @@ import { t } from "i18next"
 
 export const data = {
     name: "ping",
-    description: "deneme",
-    cooldown: 10,
+    description: "You display the delay values of the system",
 
     execute(interaction) {
 

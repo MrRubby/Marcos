@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "incoming-outgoing",
-    description: "gelen giden kanalı",
+    description: "Sets the Incoming-Outgoing channel",
 
 
     async execute(interaction) {
@@ -49,12 +49,12 @@ export const slash_data = {
     options:[
         {
           name: "set",
-          description: "kurulum yap",
+          description: "make an installation",
           type: 1,
           options:[
             {
                 name: "channel",
-                description: "kanalı belirtin",
+                description: "specify the channel",
                 type: 7,
                 required: true,
                 channel_types: [0]
@@ -63,7 +63,7 @@ export const slash_data = {
         },
         {
             name: "reset",
-            description: "gelen giden sistemi kapatır",
+            description: "Closes the Incoming-Outgoing system",
             type: 1
         }
         

@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "role-log",
-    description: "gelen giden kanalı",
+    description: "Sets the role log channel",
 
 
     async execute(interaction) {
@@ -52,12 +52,12 @@ export const slash_data = {
     options:[
         {
           name: "set",
-          description: "kurulum yap",
+          description: "make an installation",
           type: 1,
           options:[
             {
                 name: "channel",
-                description: "kanalı belirtin",
+                description: "specify the channel",
                 type: 7,
                 required: true,
                 channel_types: [0]
@@ -66,7 +66,7 @@ export const slash_data = {
         },
         {
             name: "reset",
-            description: "gelen giden sistemi kapatır",
+            description: "Closes the role log system",
             type: 1
         }
         

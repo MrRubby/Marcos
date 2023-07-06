@@ -3,8 +3,8 @@ import { t } from "i18next"
 import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
-    name: "ban",
-    description: "Get information about the system status",
+    name: "registry-status",
+    description: "Determines the status of the recording system",
 
 
     async execute(interaction) {
@@ -44,12 +44,12 @@ export const slash_data = {
     options:[
         {
           name: "open",
-          description: "açar",
+          description: "Opens the system",
           type: 1,
         },
         {
             name: "close",
-            description: "kapatır",
+            description: "Shuts down the system",
             type: 1,
         }
         

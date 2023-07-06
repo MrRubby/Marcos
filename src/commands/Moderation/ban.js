@@ -3,8 +3,8 @@ import { t } from "i18next"
 import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
-    name: "bana",
-    description: "Get information about the system status",
+    name: "ban",
+    description: "Bans the user from the server",
 
 
     async execute(interaction) {
@@ -44,13 +44,13 @@ export const slash_data = {
     options:[
         {
           name: "user",
-          description: "user belirt",
+          description: "Specify the user",
           type: 6,
           required: true
         },
         {
             name: "reason",
-            description: "reason belirt",
+            description: "Specify the reason",
             type: 3,
             required: true
         }

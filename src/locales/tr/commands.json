@@ -8,8 +8,12 @@
         "reply_message": "Sisteme ait gecikme bilgilerini görebilirsin"
     },
     "info": {
-        "information_title": "Sistem Durumu",
-        "information": "Sistemimizi JS modül sürümünden ESM modüle taşımaktayız. Botumuz Discord tarafından resmi onay almadan önce bunu tamamlamayı planlıyoruz."
+        "information_title": "Server: ",
+        "information_desc": "Bu sunucuda ki komutlar şununla başlar `/`",
+        "fields_name": "Yardım & Destek",
+        "fields_value": "Komut Listesi",
+        "fields_value1": "Gizlilik Politikası",
+        "fields_value2": "Hizmet Şartları"
     },
     "autorole": {
         "set_succes": "Otomatik rol sistemi başarıyla ayarlandı. Bota ait rol eğer belirlenen rolün üstünde bulunmaz ise sistem düzgün çalışmayacaktır.",

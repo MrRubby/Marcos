@@ -3,8 +3,8 @@ import { t } from "i18next"
 import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
-    name: "ban",
-    description: "Get information about the system status",
+    name: "registry-role",
+    description: "The registration system sets the roles",
 
 
     async execute(interaction) {
@@ -49,18 +49,18 @@ export const slash_data = {
     options:[
         {
           name: "set",
-          description: "kullanıcı belirt",
+          description: "make an installation",
           type: 1,
           options: [
             {
                 name: "admin-role",
-                description: "admin role belirt",
+                description: "Specify the authorized role",
                 type: 8,
                 required: true
             },
             {
                 name: "user-role",
-                description: "user role belirt",
+                description: "Specify the user role",
                 type: 8,
                 required: true
             }
@@ -68,7 +68,7 @@ export const slash_data = {
         },
         {
             name: "reset",
-            description: "sistemi sıfırlar",
+            description: "Resets registration system roles",
             type: 1
         }
     ]

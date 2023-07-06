@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "settings",
-    description: "settings",
+    description: "You can see the server settings",
 
     async execute (interaction, client) {
 

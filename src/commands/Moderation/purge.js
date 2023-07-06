@@ -2,8 +2,8 @@ import { EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
 
 export const data = {
-    name: "sil",
-    description: "Mesajlarıı siler",
+    name: "purge",
+    description: "Deletes messages",
 
     execute(interaction) {
 
@@ -12,7 +12,7 @@ export const data = {
         if(!interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels))
         return interaction.reply({ content: t("missing_permissions", {ns: "common", lng: interaction.locale}) })
 
-        const deleteNumber = interaction.options.getInteger("miktar")
+        const deleteNumber = interaction.options.getInteger("amount")
 
         channel.bulkDelete(deleteNumber, true)
         .then(messages => {
@@ -26,8 +26,8 @@ export const slash_data = {
     description: data.description,
     options: [
         {
-            name: "miktar",
-            description: "Miktar belirtin",
+            name: "amount",
+            description: "Specify the quantity",
             type: 4,
             required: true,
             min_value: 1,

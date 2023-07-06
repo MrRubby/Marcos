@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "kick-setting",
-    description: "Get information about the system status",
+    description: "Sets the kick system",
 
     async execute(interaction) {
 
@@ -49,10 +49,10 @@ export const slash_data = {
     type: 1,
     options:[
         {
-          name:"set",description:"kick sistemi ayarlar",type:1,options:[
+          name:"set",description:"make an installation",type:1,options:[
             {
                 name:"role",
-                description:"Ban Yetilisi Rolü (UNUTMA! Bu role sahip kişiler üyeleri yasakla yetkisine sahip olucak!)",
+                description:"The Role of Kick Talent",
                 type:8,
                 required:true
             }
@@ -60,7 +60,7 @@ export const slash_data = {
         },
         {
             name:"reset",
-            description:"Ban sistemi sıfırlar",
+            description:"Closes the kick system",
             type:1
         }
         

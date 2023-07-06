@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "kick",
-    description: "sunucudan atar",
+    description: "Kicks the user out of the server",
 
 
     async execute(interaction) {
@@ -45,13 +45,13 @@ export const slash_data = {
     options:[
         {
           name: "user",
-          description: "user belirt",
+          description: "Specify the user",
           type: 6,
           required: true
         },
         {
             name: "reason",
-            description: "reason belirt",
+            description: "specify the reason",
             type: 3,
             required: true
         }

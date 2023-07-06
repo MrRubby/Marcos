@@ -4,7 +4,7 @@ import guilds_Schema from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "unban",
-    description: "Get information about the system status",
+    description: "Removes the user's ban",
 
 
     async execute(interaction) {
@@ -41,7 +41,7 @@ export const slash_data = {
     options:[
         {
           name: "id",
-          description: "user belirt",
+          description: "Specify the user ID",
           type: 3,
           required: true
         }      

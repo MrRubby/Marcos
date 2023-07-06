@@ -3,7 +3,7 @@ import { t } from "i18next"
 
 export const data = {
     name: "nuke",
-    description: "kanalı baştan oluşturur",
+    description: "Creates the channel from the beginning",
 
 
     async execute(interaction) {

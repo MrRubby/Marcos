@@ -3,8 +3,7 @@ import { t } from "i18next"
 
 export const data = {
     name: "avatar",
-    description: "Kullanıcının avatarını döndürür",
-    cooldown: 10,
+    description: "Returns the user's avatar",
 
     execute(interaction) {
 

@@ -2,7 +2,7 @@ import { EmbedBuilder } from "discord.js"
 import { ContextMenuCommandBuilder } from "@discordjs/builders"
 
 export const data = {
-    name: "bilgi",
+    name: "user-info",
 
     execute(interaction) {
 
