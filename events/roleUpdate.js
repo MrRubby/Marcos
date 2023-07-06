@@ -1,11 +1,16 @@
 import { EmbedBuilder } from "discord.js"
 import guilds_Schema from "../utils/database/guilds_Schema.js"
 
-const { default: yetkiler } = await import("../utils/Bot/perm.json", {
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const Yetkiler = require('../utils/Bot/perm.json');
+
+/*const { default: yetkiler } = await import("../utils/Bot/perm.json", {
     assert: {
       type: "json",
     },
-  });
+  });*/
 
 export default client => {
 

@@ -8,8 +8,12 @@
         "reply_message": "You can see the delay information of the system"
     },
     "info": {
-        "information_title": "System Status",
-        "information": "We are moving our system from the JS module version to the ESM module. We plan to complete this before our bot receives official approval by Discord."
+        "information_title": "Server: ",
+        "information_desc": "Commands in this server start with `/`",
+        "fields_name": "Help & Support",
+        "fields_value": "Command List",
+        "fields_value1": "Privacy Policy",
+        "fields_value2": "Terms of Service"
     },
     "autorole": {
         "set_succes": "The automatic role system has been set up successfully. If the role belonging to the bot is not included above the specified role, the system will not work properly.",
