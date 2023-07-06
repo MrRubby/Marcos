@@ -1,0 +1,21 @@
+{
+    "open": "✅ Açık",
+    "close": "❌ Kapalı",
+    "justed": "✅ Ayarlanmış",
+    "unjusted": "❌ Ayarlanmamış",
+    "user_name": "Kullanıcı Adı",
+    ":user_id": "Kullanıcı ID",
+    "ban_system": "Yasaklama Sistemi",
+    "kick_system": "Tekmeleme(Kick) Sistemi",
+    "autorole_system": "Otomatik Rol Sistemi",
+    "registry_system": "Kayıt Sistemi",
+    "modlog_system": "Moderatör Log Sistemi",
+    "inoutcoming_system": "Giriş-Çıkış Log Sistemi",
+    "rolelog_system": "Rol Log Sistemi",
+    "messagelog_system": "Mesaj Log Sistemi",
+    "channellog_system": "Kanal Log Sistemi",
+    "roles": "Roller",
+    "Unexpected_error": "Beklenmedik bir hata oluştu. Lütfen geliştirici ekibi ile iletişime geçip durumu bildiriniz.",
+    "missing_permissions": "Bu komutu kullanabilmek için yeterli yetkiye sahip değilsin!",
+    "cooldown_error": "Bu komutu `{{cooldown}}` saniye sonra tekrar kullanabilirsin!"
+}

@@ -1,0 +1,14 @@
+Eklenen EVENTLER
+
+
+Eklenen Commandlar
+
+
+Hatalar
+
+1- Sunucuya giriş yapan kullanıcının bilgisini yazdırmıyor.
+
+Yapılacaklar
+
+1- Dil sistemine eklemeler Yapılacaklar (Eventlere dil eklenemiyor "interacitonCreate ekleniyor & messageCreate belki ekleniyor olabilir") // Komutlar eklendi!
+2- Shard sistemi eklenecek

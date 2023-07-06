@@ -1,0 +1,21 @@
+{
+    "open": "✅ Open",
+    "close": "❌ Closed",
+    "justed": "✅ Adjusted",
+    "unjusted": "❌ Unadjusted",
+    "user_name": "User Name",
+    ":user_id": "User ID",
+    "ban_system": "Ban System",
+    "kick_system": "Kick System",
+    "autorole_system": "Auto Role System",
+    "registry_system": "Registration System",
+    "modlog_system": "Moderator Log System",
+    "inoutcoming_system": "Input-Output Log System",
+    "rolelog_system": "Role Log System",
+    "messagelog_system": "Message Log System",
+    "channellog_system": "Channel Log System",
+    "roles": "Roles",
+    "Unexpected_error": "An unexpected error has occurred. Please contact the developer team and inform them about the situation.",
+    "missing_permissions": "You don't have enough authority to use this command!",
+    "cooldown_error": "You can use this command again after `{{cooldown}}` seconds!"
+}
