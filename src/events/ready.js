@@ -7,7 +7,7 @@ export default client => {
 
     client.once("ready", () => {
 
-        register_commands(client, "guild")
+        register_commands(client, "global")
 
         console.log("The system was activated without any problems")
 
