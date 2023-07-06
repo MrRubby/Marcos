@@ -11,7 +11,7 @@ export default (command, user_id) => {
 
     const now = Date.now()
     const timestamps = cooldowm.get(command.name)
-    const cooldownAmount =  (command.cooldowm || 5) * 1000
+    const cooldownAmount =  (command.cooldowm || 10) * 1000
 
     if(timestamps.has(user_id)) {
 
