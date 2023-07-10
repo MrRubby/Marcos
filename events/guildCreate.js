@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js"
+import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
 import guilds_Schema from "../utils/database/guilds_Schema.js"
 
 export default client => {
@@ -19,7 +19,32 @@ export default client => {
           {name: `Sunucu sahibi kimliği`, value: `${owner.id}`},
           {name: `Sunucu üye sayısı`, value: `${guild.memberCount}`}
         ])
-        channelAdd.send({embeds: [guildAddembed]}) 
+        channelAdd.send({embeds: [guildAddembed]})
+
+        const row1 = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setLabel("Invite Me")
+            .setStyle(ButtonStyle.Link)
+            .setURL("https://discord.com/oauth2/authorize?client_id=580189198250803201&permissions=8&scope=applications.commands%20bot"),
+             new ButtonBuilder()
+             .setLabel("Vote Me")
+             .setStyle(ButtonStyle.Link)
+             .setURL("https://top.gg/bot/580189198250803201"),
+             new ButtonBuilder()
+             .setLabel("Privacy Policy")
+             .setStyle(ButtonStyle.Link)
+             .setURL("https://mrrubby.github.io/marco/privacy/index.html")
+        )
+
+        const embed = new EmbedBuilder()
+        .setTitle(guild.name)
+        .setDescription(`Thank you for adding me to  your server!
+        - Don't forget to read our privacy policy before using our bot!
+        - Multi-language support is supported on a user-based basis, not on a server-based basis.`)
+        .setThumbnail(owner.avatarURL({ dynamic: true }))
+
+        owner.send({ embeds: [embed], components: [row1]})
 
     })
 
