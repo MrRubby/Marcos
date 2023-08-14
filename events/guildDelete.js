@@ -6,17 +6,16 @@ export default client => {
     client.on("guildDelete", async guild => {
 
         const channelDel = client.channels.cache.get("1121447101134557205")
-        const owner = await client.users.fetch(guild.ownerId)
 
         const dataDel = await guilds_Schema.findOne({ guild_id: guild.id}) || null;
         if(dataDel) return
         try{
-
           await guilds_Schema.deleteOne({ guild_id: guild.id })
-
         } catch (err) {
           console.log(err)
         }
+        if(!guild.ownerId) return;
+        const owner = await client.users.fetch(guild.ownerId)
 
         const guildDelembed = new EmbedBuilder()
         .setTitle("Eski Sunucu")

@@ -19,8 +19,7 @@ const client = new Client({
         GatewayIntentBits.GuildIntegrations,
         GatewayIntentBits.GuildVoiceStates,
         GatewayIntentBits.GuildMessages,
-    ],
-    presence: { status: "online" }
+    ]
 })
 
 // Assignment
