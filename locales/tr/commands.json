@@ -1,5 +1,5 @@
 {
-    "bansystem" : {
+    "bansystem" :  {
         "set_succes" : "Ban sistemi başarıyla ayarlandı. {{yetkirole}} rolüne sahip kullanıcılar sadece ban komutunu kullanabilecek.",
         "reset_succes" : "Ban sistemi başarıyla sıfırlandı. Sadece `Üyeleri Yasakla` yetkisine sahip kullanıcılar ban komutunu kullanabilecek.",
         "error": "Ban sistemi kapalıyken sıfırlama işlemi gerçekleştirilemez."
@@ -113,5 +113,13 @@
             "title" : "Reklam Engelleme Sistemi",
             "description" : "Reklam engelleme sistemi bu sunucuda pasif edildi."
         } 
+    },
+    "ping": {
+        "discord_latency": "Discord gecikmesi",
+        "bot_latency": "Bot gecikmesi",
+        "message_speed": "Mesaj hızı",
+        "message_response_speed": "Mesaj yanıt hızı",
+        "apı_response_speed": "API yanıt hızı",
+        "reply_message": "Sistemin gecikme bilgilerini görebilirsiniz"
     }
 }

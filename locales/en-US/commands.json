@@ -1,4 +1,119 @@
 {
+    "bansystem" :  {
+        "set_succes" : "The ban system has been successfully set up. Users with the {{yetkirole}} role will only be able to use the ban command.",
+        "reset_succes" : "The ban system has been successfully reset. Only users with `Ban Members` authorization will be able to use the ban command.",
+        "error": "A reset cannot be performed when the Ban system is off."
+    },
+    "kicksystem" : {
+        "set_succes" : "Kick system has been successfully set up. Users with the {{yetkirole}} role will only be able to use the kick command.",
+        "reset_succes" : "Kick system has been successfully reset. Only users with `Kick Members` authorization will be able to use the kick command.",
+        "error" : "A reset cannot be performed when the kick system is off."
+    },
+    "autorole": {
+        "set_succes": "The automatic role system has been successfully installed. If the role <@{{botid}}> is not found on <@{{autorole}}>, the system will not work properly.",
+        "res_succes": "The automatic role system has been successfully reset. New members joining the server will not be assigned any roles by the bot.",
+        "error": "A reset cannot be performed when the auto-role system is off."
+    },
+    "ban": {
+        "succes": "User successfully banned from the server.",
+        "error-1": "The user is already banned.",
+        "error-2": "You cannot ban a user with the same authorization.",
+        "error-3": "You cannot ban a user with **Ban Members**.",
+        "error-4": "You cannot ban the server owner.",
+        "error-5": "I cannot forbid myself.",
+        "error-6": "You cannot ban yourself.",
+        "error-7": "You cannot ban a user for not being on the server."
+    },
+    "kick": {
+        "succes": "User {{user}} was successfully kicked off the server.",
+        "error-1": "The user is not on the server, so you can't kick them.",
+        "error-2": "You can't kick a user you have the same authority over.",
+        "error-3": "You cannot kick a user with **Ban Members** authorization.",
+        "error-4": "You can't kick the server owner.",
+        "error-5": "I can't kick myself.",
+        "error-6": "You can't kick yourself."
+    },
+    "nuke": {
+        "succes": "The canal has been successfully reconstructed.",
+        "reason": "Rebuilding"
+    },
+    "purge": {
+        "succes": "The message {{message}} was successfully deleted."
+    },
+    "info": {
+        "information_desc": "Commands on this server start with `{{prefix}}`. You can find the list of commands hosted by the bot and our policies in the links below.",
+        "fields_name": "Help & Support",
+        "fields_value": "Command List",
+        "fields_value1": "Privacy Policy",
+        "fields_value2": "Terms of Service"
+    },
+    "avatar": {
+        "title": "Avatar belonging to user {{target}}",
+        "description": "[Click]({{avatar}}) to open the avatar in the browser"
+    },
+    "unban": {
+        "succes": "User with ID `{{id}}}` has been successfully unbanned.",
+        "error": "The user was not found in the banned list."
+    },
+    "settings": {
+        "title": "Settings for the {{GuildName}} Server",
+        "description": "The following settings are only valid on the server you are on!"
+    },
+    "rolelog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Rol log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Rol düzenlemelerine ait bilgiler artık alamayacaksınız.",
+        "set_embed": "**Rol takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala eklenen, silinen ve güncellenen rol bilgileri paylaşılacaktır.**"
+    },
+    "welbylog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Gelen-Giden sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı.",
+        "set_embed": "**Gelen-Giden bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala sunucuya giriş-çıkış yapan kullanıcıların bilgileri paylaşılacaktır.**"
+    },
+    "modlog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Mod log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Moderatör eylemlerine ait bilgiler artık alamayacaksınız.",
+        "set_embed": "**Moderatör takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala moderatör eylemleri paylaşılacaktır.**"
+    },
+    "messagelog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Mesaj log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Silinen ve düzenlenen mesajlara ait bilgiler alamayacaksınız.",
+        "set_embed": "**Mesaj takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala silinen ve güncellenen mesaj bilgileri paylaşılacaktır.**"
+    },
+    "channellog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Kanal log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Artık düzenlenen kanallara ait bilgiler alamayacaksınız.",
+        "set_embed": "**Kanal takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala eklenen, silinen ve güncellenen kanal bilgileri paylaşılacaktır.**"
+    },
+    "kfrEngel" : {
+        "on" : {
+            "title" : "Profanity Blocking System",
+            "description" : "The profanity blocking system has been activated on this server."
+        },
+        "off" : {
+            "title" : "Profanity Blocking System",
+            "description" : "The profanity blocking system has been disabled on this server."
+        } 
+    },
+    "lnkEngel" : {
+        "on" : {
+            "title" : "Ad Blocking System",
+            "description" : "Ad blocking system is activated on this server."
+        },
+        "off" : {
+            "title" : "Ad Blocking System",
+            "description" : "Ad blocking is disabled on this server."
+        } 
+    },
     "ping": {
         "discord_latency": "Discord Delay",
         "bot_latency": "Bot Delay",
