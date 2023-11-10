@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js"
-import { SlashCommandBuilder } from "@discordjs/builders"
 import { t } from "i18next"
+import embeds from "../../utils/bot/embeds.js"
 
 export const data = {
     name: "ping",
@@ -17,7 +17,7 @@ export const data = {
             const embed = new EmbedBuilder()
             .setColor("Red")
             .setTitle(interaction.user.username + " - Pong!")
-            .setThumbnail(interaction.user.displayAvatarURL())
+            .setThumbnail(interaction.guild.iconURL())
             .addFields([
                 { name: t("ping.message_speed", {lng: interaction.locale}), value: `\`${end - start}ms\` 🛰️` },
                 { name: t("ping.message_response_speed", {lng: interaction.locale}), value: `\`${Date.now() - start}ms\` 🛰️` },

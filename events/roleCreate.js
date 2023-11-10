@@ -1,24 +1,26 @@
 import { EmbedBuilder } from "discord.js"
-import guilds_Schema from "../utils/database/guilds_Schema.js"
+import database from "../utils/database/guilds_Schema.js"
+import { t } from "i18next"
 
 export default client => {
 
     client.on("roleCreate", async (role) => {
 
-        const { rolelog_id } = await guilds_Schema.findOne({ guild_id: role.guild.id }) || { rolelog_id: null}
+        const { rolelog_id } = await database.findOne({ guild_id: role.guild.id }) || { rolelog_id: null}
         if(!rolelog_id) return
 
         const channel = role.guild.channels.cache.get(rolelog_id)
 
         channel.send({
             embeds: [new EmbedBuilder()
-            .setTitle("Rol Oluşturuldu")
-            .setDescription(`**Az önce sunucunda bir rol oluşturuldu. Oluşturulan rol detayları aşağıda görüntülenmektedir.**`)
+            .setTitle(t("roleCreate.title", { ns: "common", lng: role.guild.locale}))
+            .setDescription(t("roleCreate.description", { ns: "common", lng: role.guild.locale}))
             .setThumbnail(role.client.user.avatarURL({ dynamic: true}))
-            .addFields({name:"Rol Adı",value:role.name,inline:true},
-            {name:"Rol Rengi",value:`${role.hexColor}`,inline:true},
-            {name:"Rol ikonu",value:role.iconURL() ? `[Görüntüle](${role.iconURL()})`:"Icon Yok",inline:true},
-            {name:"Oluşturulma tarihi",value:`<t:${parseInt(role.createdTimestamp / 1000)}:R>`,inline:true})
+            .addFields(
+            {name : t("roleCreate.addFields.roleName", { ns: "common", lng: role.guild.locale}) ,value:role.name,inline:true},
+            {name : t("roleCreate.addFields.roleColor", { ns: "common", lng: role.guild.locale}) ,value:`${role.hexColor}`,inline:true},
+            {name : t("roleCreate.addFields.roleIcon", { ns: "common", lng: role.guild.locale}) ,value:role.iconURL() ? `${t("roleCreate.addFields.roleName", { ns: "common", lng: role.guild.locale})}(${role.iconURL()})` : t("roleCreate.addFields.noneIcon", { ns: "common", lng: role.guild.locale}) ,inline:true},
+            {name : t("roleCreate.addFields.createTime", { ns: "common", lng: role.guild.locale}) ,value:`<t:${parseInt(role.createdTimestamp / 1000)}:R>`,inline:true})
       
             .setColor("Green")
             .setFooter({text:`${role.guild.name}`})

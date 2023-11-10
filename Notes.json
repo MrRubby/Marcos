@@ -1,0 +1,26 @@
+{
+    "DANGER": "AŞAĞIDA BELİRTİLEN SİSTEMLER SIRAYA ALINMADAN ÖNCE MEVCUT SİSTEMLER DÜZGÜN VE TEMİZ ŞEKİLDE AKTARILACAK",
+
+    "Yapılacak Listesi" : {
+        "Çoklu Dil Düzenlemesi" : "Locale dosyasından veri çekmesi mümkün olmayan betimlemelerin tamamı ana dil olarak EN olarak düzenlenecektir.", "":"",
+        // "Filtre Sistemi" : "Message Content çözümü sonrası reklam engel, küfür engel tarzı filtreler üzerinde gerekli kontrol ve düzenlemeler yapılarak eklenecek.",
+        "Settings Komutu" : "Komuta Context Menu eklenerek ayarlamaların bu menü üzerinden yapılması sağlanacak.",
+        "Icon Eklemesi" : "Hoş görünüm yaşatması açısından bazı komutlara icon eklenerek görünümleri şenlendirilecek.",
+        "Duyuru Sistemi" : "Simple Uptime gibi ve/veya benzeri duyuru sistemi",
+        "Database Ayrıştırması" : "Eklenebilecek bazı özelliklerden kaynaklı olarak database ayrıştırması mümkünse ayrıştırma yapılacak.",
+        "Premium" : "Kullanıcı ve sunucu bazı Premium sistemi getirilecek",
+        "Kayıt Sistemi" : "Sistem görünüş açısından özelleştirilecek.",
+        "Feedback": "Form düzenine sahip olacak feedback komutu oluşturulacak"
+    }, 
+
+    "Önemli Notlar" : {
+        "Premium" : "Premium sistemi eklendikten sonra destekleyici sistemler eklenmelidir. Örneğin günlük bonus olarak coin kazanılır ve coin karşılığında Premium alınabilir.",
+        "Guild Member Intent" : "Intent'in alınabilmesi için otorol sistemi özelleştirilecek ve sayaç sistemi eklenecek.",
+        "Embed" : "Bazı komutlarda embed yerine content sistemi mevcut. Gerekli olanlar embed olarak değiştirilecek",
+        // "Log Bilgilendirme" : "Logların ayarlandığı kanala tek tek kanala mesaj atacak örneğin (Otorol kanalı başarıyla bu kanala ayarlandı. Bu kanala botlara rolün verildiği bildirilecektir.)"
+    },
+
+    "Askıya Alınan Eylemler" : {
+        
+    }
+}

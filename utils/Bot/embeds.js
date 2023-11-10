@@ -1,16 +1,20 @@
 import { EmbedBuilder } from "discord.js";
+import { t } from "i18next"
 
-export default (description, color = "#ffa954", title = "") => {
+export default (client, interaction) => {
 
-    if (color == "RED") color = "#ff0000"
-    else if (color == "GREEN") color = "#00ff4b"
-    else if (color == "INFO") color = "#0019ff"
+    const pingEmbed = new EmbedBuilder()
+    .setColor("Red")
+    .setTitle(interaction.user.username + " - Pong!")
+    .setThumbnail(interaction.user.displayAvatarURL())
+    .addFields([
+        { name: t("ping.message_speed", {lng: interaction.locale}), value: ` 🛰️` },
+        { name: t("ping.message_response_speed", {lng: interaction.locale}), value: ` 🛰️` },
+        { name: t("ping.apı_response_speed", {lng: interaction.locale}), value: ` 🛰️` }
+    ])
+    .setTimestamp()
+    .setFooter({ text: `${interaction.client.user.username} ❤️` })
 
-    const response = new EmbedBuilder()
-    .setDescription(description)
-    .setColor(color)
-    .setTitle(title)
+    return { pingEmbed}
 
-    return response
-
-} 
+}

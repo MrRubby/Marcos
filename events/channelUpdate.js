@@ -1,60 +1,57 @@
 import { EmbedBuilder } from "discord.js"
-import guilds_Schema from "../utils/database/guilds_Schema.js"
+import database from "../utils/database/guilds_Schema.js"
+import { t } from "i18next"
 
 export default client => {
 
-    client.on("channelUpdate", async (oldChannel, newChannel) => {
+  client.on("channelUpdate", async (oldChannel, newChannel) => {
 
-        const { channellog_id } = await guilds_Schema.findOne({ guild_id: oldChannel.guild.id }) || { channellog_id: null }
-        if (!channellog_id) return
+    const { channellog_id } = await database.findOne({ guild_id: oldChannel.guild.id }) || { channellog_id: null }
+    if (!channellog_id) return
 
-        const logs = oldChannel.guild.channels.cache.get(channellog_id)
+    const logs = oldChannel.guild.channels.cache.get(channellog_id)
 
-        const response = new EmbedBuilder()
-        .setTitle("Kanal Güncellendi")
-          .setDescription(`**Az önce sunucunda bir kanal Güncellendi. Güncelleme detayları aşağıda görüntülenmektedir.**`)
-          .setThumbnail(oldChannel.client.user.avatarURL({ dynamic: true}))
-          .addFields([
-            { name: "Eski Kanal Adı", value: `${oldChannel.name}`, inline: true },
-            { name: "Eski Kanal Tipi", value: `${String(oldChannel.type)
-            .replace(0,"Yazı Kanalı")
-            .replace(2,"Ses Kanalı")
-            .replace(4,"Kategori")
-            .replace(5,"Duyuru Kanalı")
-            .replace(11,"Herkese Açık Alt Başlık Kanalı")
-            .replace(13,"Sahne Kanalı")
-            .replace(14,"Rehber Kanalı")
-            .replace(15,"Forum Kanalı")
-          }`
-            , inline: true },
-            { name: "Kanal ID", value: `${newChannel.id}`, inline: true },
-            { name: "Olusturulma Tarihi", value: `<t:${parseInt(newChannel.createdTimestamp / 1000)}:R>`, inline: true },
-            { name:"NSFW",value:`${newChannel.nsfw ? "✅ Açık" : "❌ Kapalı"}`,inline:true},
-          ])
+    const response = new EmbedBuilder()
+    .setTitle(t("channelUpdate.title", {ns: "common", lng: oldChannel.guild.locale}))
+    .setDescription(t("channelUpdate.description", {ns: "common", lng: oldChannel.guild.locale}))
+    .setThumbnail(oldChannel.guild.iconURL({ dynamic: true}))
+    .addFields([
+      { name: t("channelUpdate.addFields.channelName", {ns: "common", lng: oldChannel.guild.locale}), value: `${oldChannel.name}`, inline: true },
+      { name: t("channelUpdate.addFields.channelType", {ns: "common", lng: oldChannel.guild.locale}), value: `${String(oldChannel.type)
+      .replace(0,t("channelUpdate.addFields.replace0", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(2,t("channelUpdate.addFields.replace2", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(4,t("channelUpdate.addFields.replace4", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(5,t("channelUpdate.addFields.replace5", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(11,t("channelUpdate.addFields.replace11", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(13,t("channelUpdate.addFields.replace13", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(14,t("channelUpdate.addFields.replace14", {ns: "common", lng: oldChannel.guild.locale}))
+      .replace(15,t("channelUpdate.addFields.replace15", {ns: "common", lng: oldChannel.guild.locale}))}`, inline: true },
+      { name: t("channelUpdate.channelID", {ns: "common", lng: oldChannel.guild.locale}), value: `${newChannel.id}`, inline: true },
+      { name: t("channelUpdate.createTime", {ns: "common", lng: oldChannel.guild.locale}), value: `<t:${parseInt(newChannel.createdTimestamp / 1000)}:R>`, inline: true },
+      { name: t("channelUpdate.NSFW", {ns: "common", lng: oldChannel.guild.locale}) ,value:`${oldChannel.nsfw ? t("open", {ns: "common", lng: oldChannel.guild.locale}) : t("close", {ns: "common", lng: oldChannel.guild.locale})}`,inline:true},
+    ])
 
-          .addFields([
-            { name: "Yeni Kanal Adı", value: `${newChannel.name}`, inline: false },
-            { name: "Yeni Kanal Tipi", value: `${String(newChannel.type)
-            .replace(0,"Yazı Kanalı")
-            .replace(2,"Ses Kanalı")
-            .replace(4,"Kategori")
-            .replace(5,"Duyuru Kanalı")
-            .replace(11,"Herkese Açık Alt Başlık Kanalı")
-            .replace(13,"Sahne Kanalı")
-            .replace(14,"Rehber Kanalı")
-            .replace(15,"Forum Kanalı")
-          }`
-            , inline: true },
-            { name: "Güncellenme Tarihi", value: `<t:${parseInt(new Date() / 1000)}:R>`, inline: true },
-            { name:"NSFW",value:`${newChannel.nsfw ? "✅ Açık" : "❌ Kapalı"}`,inline:true},
-          ])
+    .addFields([
+      { name: t("channelUpdate.addFields.channelName2", {ns: "common", lng: newChannel.guild.locale}), value: `${newChannel.name}`, inline: true },
+      { name: t("channelUpdate.addFields.channelType2", {ns: "common", lng: newChannel.guild.locale}), value: `${String(newChannel.type)
+      .replace(0,t("channelUpdate.addFields.replace0", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(2,t("channelUpdate.addFields.replace2", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(4,t("channelUpdate.addFields.replace4", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(5,t("channelUpdate.addFields.replace5", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(11,t("channelUpdate.addFields.replace11", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(13,t("channelUpdate.addFields.replace13", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(14,t("channelUpdate.addFields.replace14", {ns: "common", lng: newChannel.guild.locale}))
+      .replace(15,t("channelUpdate.addFields.replace15", {ns: "common", lng: newChannel.guild.locale}))}`, inline: true },
+      { name: t("channelUpdate.updateTime", {ns: "common", lng: newChannel.guild.locale}), value: `<t:${parseInt(new Date() / 1000)}:R>`, inline: true },
+      { name: t("channelUpdate.NSFW", {ns: "common", lng: newChannel.guild.locale}),value:`${newChannel.nsfw ? t("open", {ns: "common", lng: newChannel.guild.locale}) : t("close", {ns: "common", lng: newChannel.guild.locale})}`,inline:true},
+    ])
 
-          .setColor("Orange")
-          .setFooter({text:`${oldChannel.guild.name}`})
-          .setTimestamp()
+    .setColor("Orange")
+    .setFooter({text:`${oldChannel.guild.name}`})
+    .setTimestamp()
 
-          logs.send({ embeds: [response]})
+    logs.send({ embeds: [response]})
 
-    })
+  })
 
 }

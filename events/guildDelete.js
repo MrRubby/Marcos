@@ -1,16 +1,22 @@
 import { EmbedBuilder } from "discord.js"
-import guilds_Schema from "../utils/database/guilds_Schema.js"
+import database from "../utils/database/guilds_Schema.js"
+
+const { default: CONFİG } = await import("../config.json", {
+  assert: {
+    type: "json",
+  },
+});
 
 export default client => {
 
     client.on("guildDelete", async guild => {
 
-        const channelDel = client.channels.cache.get("1121447101134557205")
+        const channelDel = client.channels.cache.get(CONFİG.LOG.GUILD_DELETE)
 
-        const dataDel = await guilds_Schema.findOne({ guild_id: guild.id}) || null;
+        const dataDel = await database.findOne({ guild_id: guild.id}) || null;
         if(dataDel) return
         try{
-          await guilds_Schema.deleteOne({ guild_id: guild.id })
+          await database.deleteOne({ guild_id: guild.id })
         } catch (err) {
           console.log(err)
         }
@@ -18,15 +24,16 @@ export default client => {
         const owner = await client.users.fetch(guild.ownerId)
 
         const guildDelembed = new EmbedBuilder()
-        .setTitle("Eski Sunucu")
+        .setTitle("Old Server")
+        .setColor("Red")
         .setThumbnail(client.user.avatarURL({ dynamic: true }))
-        .setDescription("Bir sunucu aramızdan ayrıldı. Sunucuya ait bilgiler aşağıda bulunmaktadır")
+        .setDescription("A server has stopped working. Details regarding the server can be found below.")
         .addFields([
-            {name: `Sunucu adı`, value: `${guild.name}`},
-            {name: `Sunucu kimliği`, value: `${guild.id}`},
-            {name: `Sunucu sahibi`, value: `${owner.tag}`},
-            {name: `Sunucu sahibi kimliği`, value: `${owner.id}`},
-            {name: `Sunucu üye sayısı`, value: `${guild.memberCount}`}
+            {name: `Server name`, value: `${guild.name}`},
+            {name: `Server ID`, value: `${guild.id}`},
+            {name: `Server owner`, value: `${owner.tag}`},
+            {name: `Server owner ID`, value: `${owner.id}`},
+            {name: `Server member count`, value: `${guild.memberCount}`}
         ])
         channelDel.send({embeds: [guildDelembed]})
 

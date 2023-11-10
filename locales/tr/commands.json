@@ -1,76 +1,28 @@
 {
-    "ping": {
-        "discord_latency": "Discord Gecikmesi",
-        "bot_latency": "Bot Gecikmesi",
-        "message_speed": "Mesaj Hızı",
-        "message_response_speed": "Mesaj Yanıt Hızı",
-        "apı_response_speed": "API Yanıt Hızı",
-        "reply_message": "Sisteme ait gecikme bilgilerini görebilirsin"
+    "bansystem" : {
+        "set_succes" : "Ban sistemi başarıyla ayarlandı. {{yetkirole}} rolüne sahip kullanıcılar sadece ban komutunu kullanabilecek.",
+        "reset_succes" : "Ban sistemi başarıyla sıfırlandı. Sadece `Üyeleri Yasakla` yetkisine sahip kullanıcılar ban komutunu kullanabilecek.",
+        "error": "Ban sistemi kapalıyken sıfırlama işlemi gerçekleştirilemez."
     },
-    "info": {
-        "information_title": "Server: ",
-        "information_desc": "Bu sunucuda ki komutlar şununla başlar `/`",
-        "fields_name": "Yardım & Destek",
-        "fields_value": "Komut Listesi",
-        "fields_value1": "Gizlilik Politikası",
-        "fields_value2": "Hizmet Şartları"
+    "kicksystem" : {
+        "set_succes" : "Kick sistemi başarıyla ayarlandı. {{yetkirole}} rolüne sahip kullanıcılar sadece kick komutunu kullanabilecek.",
+        "reset_succes" : "Kick sistemi başarıyla sıfırlandı. Sadece `Üyeleri At` yetkisine sahip kullanıcılar kick komutunu kullanabilecek.",
+        "error" : "Kick sistemi kapalıyken sıfırlama işlemi gerçekleştirilemez."
     },
     "autorole": {
-        "set_succes": "Otomatik rol sistemi başarıyla ayarlandı. Bota ait rol eğer belirlenen rolün üstünde bulunmaz ise sistem düzgün çalışmayacaktır.",
-        "res_succes": "Sistem başarıyla sıfırlandı. Artık sunucunuza giren kullanıcılara otomatik rol verilmeyecektir."
-    },
-    "avatar": {
-        "title": "{{target}} Adlı kullanıcıya ait avatar",
-        "description": "Avatarı tarayıcıda açmak için [Tıklayın]({{avatar}})"
-    },
-    "settings": {
-        "title": "{{GuildName}} Sunucusuna ait ayarlar",
-        "description": "Aşağıdaki ayarlar sadece bulunduğunuz sunucuda geçerlidir!"
-    },
-    "channellog": {
-        "set_succes": "Kanal log sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla sıfırlandı. Artık düzenlenen kanallara ait bilgiler alamayacaksınız.",
-        "set_embed": "**Kanal takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala eklenen, silinen ve güncellenen kanal bilgileri paylaşılacaktır.**"
-    },
-    "messagelog": {
-        "set_succes": "Mesaj log sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla sıfırlandı. Silinen ve düzenlenen mesajlara ait bilgiler alamayacaksınız.",
-        "set_embed": "**Mesaj takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala silinen ve güncellenen mesaj bilgileri paylaşılacaktır.**"
-    },
-    "modlog": {
-        "set_succes": "Mod log sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla sıfırlandı. Moderatör eylemlerine ait bilgiler artık alamayacaksınız.",
-        "set_embed": "**Moderatör takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala moderatör eylemleri paylaşılacaktır.**"
-    },
-    "rolelog": {
-        "set_succes": "Rol log sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla sıfırlandı. Rol düzenlemelerine ait bilgiler artık alamayacaksınız.",
-        "set_embed": "**Rol takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala eklenen, silinen ve güncellenen rol bilgileri paylaşılacaktır.**"
-    },
-    "welbylog": {
-        "set_succes": "Gelen-Giden sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla sıfırlandı.",
-        "set_embed": "**Gelen-Giden bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala sunucuya giriş-çıkış yapan kullanıcıların bilgileri paylaşılacaktır.**"
-    },
-    "bansystem": {
-        "set_succes": "Ban sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla sıfırlandı.",
-        "error": "Sistem zaten kapalı durumda iken tekrar kapatma işlemi yapamazsınız."
+        "set_succes": "Otomatik rol sistemi başarıyla kuruldu. <@{{botid}}> rolü <@{{autorole}}> üzerinde bulunmazsa sistem düzgün çalışmayacaktır.",
+        "res_succes": "Otomatik rol sistemi başarıyla sıfırlandı. Sunucuya katılan yeni üyelere bot tarafından herhangi bir rol verilmeyecektir.",
+        "error": "Otomatik rol sistemi kapalıyken sıfırlama işlemi gerçekleştirilemez."
     },
     "ban": {
-        "succes": "Kullanıcı başarıyla sunucudan yasaklandı.",
-        "error-1": "Kullanıcı zaten yasaklı listesinde bulunuyor.",
-        "error-2": "Aynı yetkiye sahip olduğun bir kullanıcıyı yasaklayamazsın.",
-        "error-3": "**Üyeleri Yasakla** yetkisine sahip kullanıcıyı yasaklayamazsın.",
-        "error-4": "Sunucu sahibini yasaklayamazsın.",
+        "succes": "Kullanıcı sunucudan başarıyla yasaklandı.",
+        "error-1": "Kullanıcı zaten yasaklılar listesinde.",
+        "error-2": "Aynı yetkiye sahip bir kullanıcıyı yasaklayamazsınız.",
+        "error-3": "Bir kullanıcıyı **Üyeleri Yasakla** yetkisi ile yasaklayamazsınız.",
+        "error-4": "Sunucu sahibini yasaklayamazsınız.",
         "error-5": "Kendimi yasaklayamam.",
-        "error-6": "Kendini yasaklayamazsın.",
-        "error-7": "Kullanıcı sunucuda olmadığı için yasaklayamazsın."
-    },
-    "kicksystem": {
-        "set_succes": "Tekmeleme(Kick) sistemi başarıyla ayarlandı.",
-        "res_succes": "Sistem başarıyla ayarlandı.",
-        "error": "Sistem zaten kapalı durumda iken tekrar kapatma işlemi yapamazsınız."
+        "error-6": "Kendinizi yasaklayamazsınız.",
+        "error-7": "Kullanıcıyı sunucuda olmadığı için yasaklayamazsınız."
     },
     "kick": {
         "succes": "{{user}} isimli kullanıcı başarıyla sunucudan tekmelendi.",
@@ -82,28 +34,84 @@
         "error-6": "Kendini tekmeleyemezsin."
     },
     "nuke": {
-        "succes": "Kanal başarıyla yeniden oluşturuldu.",
+        "succes": "Kanal başarılı bir şekilde yeniden inşa edilmiştir.",
         "reason": "Yeniden Oluşturma."
     },
     "purge": {
         "succes": "{{message}} adet mesaj başarıyla silindi."
     },
-    "registrolesystem": {
-        "set_succes": "Kayıt sistemi başarıyla ayarlandı. Kayıt yetkilisi <@{{adminrol}}> kaydı yapılan kullanıcı rolü <@{{userrol}}> olarak belirlenmiştir.",
-        "error": "Kayıt sistemini aktif etmeden komutu kullanamazsınız.",
-        "error-2": "Sistem zaten ayarlanmamış bu nedenle sistem sıfırlama eyleminde bulunamazsın.",
-        "res_succes": "Sistem başarıyla sıfırlandı."
+    "info": {
+        "information_desc": "Bu sunucudaki komutlar `{{prefix}}` ile başlar. Bot tarafından barındırılan komutların listesini ve politikalarımızı aşağıdaki bağlantılarda bulabilirsiniz.",
+        "fields_name": "Yardım & Destek",
+        "fields_value": "Komut Listesi",
+        "fields_value1": "Gizlilik Politikası",
+        "fields_value2": "Hizmet Şartları"
     },
-    "registstatus": {
-        "set_succes": "Kayıt sistemi başarıyla aktif edildi. Lütfen gerekli rolleri ayarlamayı unutma!",
-        "res_succes": "Kayıt sistemi başarıyla kapatıldı. Sistem kapatıldığından dolayı kayıtlı veriler silinmiştir.",
-        "error": "Sistem zaten kapalı durumdaykan tekrar kapatma işlemi yapamazsınız."
-    },
-    "registry": {
-        "succes:": "Kullanıcı başarıyla kayıt edildi."
+    "avatar": {
+        "title": "{{target}} kullanıcısına ait avatar",
+        "description": "Avatarı tarayıcıda açmak için [Tıklayın]({{avatar}})"
     },
     "unban": {
-        "succes": "{{id}} ID sahip kullanıcının yasağı başarıyla kaldırıldı.",
+        "succes": "ID `{{id}}` olan kullanıcının yasağı başarıyla kaldırıldı.",
         "error": "Kullanıcı yasaklılar listesinde bulunamadı."
+    },
+    "settings": {
+        "title": "{{GuildName}} Sunucusuna ait ayarlar",
+        "description": "Aşağıdaki ayarlar sadece bulunduğunuz sunucuda geçerlidir!"
+    },
+    "rolelog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Rol log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Rol düzenlemelerine ait bilgiler artık alamayacaksınız.",
+        "set_embed": "**Rol takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala eklenen, silinen ve güncellenen rol bilgileri paylaşılacaktır.**"
+    },
+    "welbylog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Gelen-Giden sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı.",
+        "set_embed": "**Gelen-Giden bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala sunucuya giriş-çıkış yapan kullanıcıların bilgileri paylaşılacaktır.**"
+    },
+    "modlog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Mod log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Moderatör eylemlerine ait bilgiler artık alamayacaksınız.",
+        "set_embed": "**Moderatör takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala moderatör eylemleri paylaşılacaktır.**"
+    },
+    "messagelog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Mesaj log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Silinen ve düzenlenen mesajlara ait bilgiler alamayacaksınız.",
+        "set_embed": "**Mesaj takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala silinen ve güncellenen mesaj bilgileri paylaşılacaktır.**"
+    },
+    "channellog": {
+        "embed": "Menüden logların tutulacağı kanalı seçiniz.",
+        "menuName" : "Bir seçim yapın...",
+        "set_succes": "Kanal log sistemi başarıyla ayarlandı.",
+        "res_succes": "Sistem başarıyla sıfırlandı. Artık düzenlenen kanallara ait bilgiler alamayacaksınız.",
+        "set_embed": "**Kanal takip bilgilendirme kanalı başarıyla bu kanala ayarlandı. Bu kanala eklenen, silinen ve güncellenen kanal bilgileri paylaşılacaktır.**"
+    },
+    "kfrEngel" : {
+        "on" : {
+            "title" : "Küfür Engelleme Sistemi",
+            "description" : "Küfür engelleme sistemi bu sunucuda aktif edildi."
+        },
+        "off" : {
+            "title" : "Küfür Engelleme Sistemi",
+            "description" : "Küfür engelleme sistemi bu sunucuda pasif edildi."
+        } 
+    },
+    "lnkEngel" : {
+        "on" : {
+            "title" : "Reklam Engelleme Sistemi",
+            "description" : "Reklam engelleme sistemi bu sunucuda aktif edildi."
+        },
+        "off" : {
+            "title" : "Reklam Engelleme Sistemi",
+            "description" : "Reklam engelleme sistemi bu sunucuda pasif edildi."
+        } 
     }
 }

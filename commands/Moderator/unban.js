@@ -1,15 +1,15 @@
 import { EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
-import guilds_Schema from "../../utils/database/guilds_Schema.js"
+import database from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "unban",
-    description: "Removes the user's ban",
+    description: "Unban the banned user",
 
 
     async execute(interaction) {
 
-        const data = await guilds_Schema.findOne({guild_id: interaction.guild.id}) || null;
+        const data = await database.findOne({guild_id: interaction.guild.id}) || null;
         const banRol = data ? data.banrole_id : null;
     
         if(interaction.member.roles.cache.has(banRol) || interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
@@ -41,7 +41,7 @@ export const slash_data = {
     options:[
         {
           name: "id",
-          description: "Specify the user ID",
+          description: "Specify the ID of the user to unban",
           type: 3,
           required: true
         }      

@@ -1,36 +1,91 @@
-import cooldown_control from "../utils/cooldown_control.js"
+import database from "../utils/database/guilds_Schema.js"
+import { PermissionsBitField } from "discord.js"
 import { t } from "i18next"
+
+const { default: kfrKelimeler } = await import("../utils/Filters/kfr.json", {
+    assert: {
+      type: "json",
+    },
+  });
+
+  const { default: linkler } = await import("../utils/Filters/lnks.json", {
+    assert: {
+      type: "json",
+    },
+  });
 
 export default client => {
 
-    const prefix = process.env.prefix
-    
-    client.on("messageCreate", message => {
-        
-        if(message.content.startsWith(prefix) == false) return
-        const args = message.content.slice(1).trim().split(/ +/)
-        const commandName = args.shift().toLowerCase()
+    client.on("messageCreate", async message => {
 
-        const command = client.commands.get(commandName)
-        if(!command) return
+        if (message.author.bot) return;
+        if(message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return; 
 
-        // Permission Control
-        if(command.permission && !message.member.permissions.has(command.permission))
-        return message.reply(`Bu komutu kullanabilmek için \`${command.permission}\` yetkisine sahip olman gerekiyor.`)
+        const db = await database.findOne({ guild_id: message.guild.id })
+        const kfrEngel = db.kfrEngel || false
+        const kelimeEngl = db.kelimeEngl || false
+        const lnkEngel = db.lnkEngl || false
+        const bKlm = db.bKlm || null
 
-        // CoolDown Control
-        const cooldowm = cooldown_control(command, message.member.id)
-        if(cooldowm) return message.reply(t("cooldown_error", {ns: "common", lng: interaction.locale, cooldowm: cooldowm}))
-
-        try {
-            command.execute(message)
-        } catch (e) {
-            console.error(e)
-            message.reply(t("Unexpected_error", {ns: "common", lng:interaction.locale}))
+        if(kfrEngel){
+            let blacklist = kfrKelimeler;
+            let foundInText = false;
+            for (var i in blacklist) {
+                if (message.content.toLowerCase().includes(blacklist[i].toLowerCase())) foundInText = true;
+            }
+            if (foundInText) {
+                await message.delete();
+                setTimeout(async => {
+                    message.channel.send({embeds:[{
+                    description:`Hey! ${message.author}, ben varken küfür etmene izin vermem!`}]}).then((msg) => {
+                        setTimeout(async () => {
+                            await msg.delete()
+                        }, 500);
+                    })
+                }, 500);
+                return;
+            }
         }
-
-        if (message.content == "ping") {
-            message.reply("Pong!")
+        if(lnkEngel){
+            let blacklist = linkler;
+            let foundInText = false;
+            for (var i in blacklist) {
+                if (message.content.toLowerCase().includes(blacklist[i].toLowerCase())) foundInText = true;
+            }
+            if (foundInText) {
+                message.delete();
+                setTimeout(async => {
+                    message.channel.send({embeds:[{
+                    description:`Hey! ${message.author}, ben varken sunuda reklam yapmana izin vermem!`}]}).then((msg) => {
+                        setTimeout(async () => {
+                            await msg.delete()
+                        }, 500);
+                    })
+                }, 500);
+                return;
+            }
+        }
+        if(kelimeEngl){
+                
+            let blacklist = bKlm;
+            let foundInText = false;
+            for (var i in blacklist) {
+                if (message.content.toLowerCase().includes(blacklist[i].toLowerCase())) foundInText = true;
+            }
+            if (foundInText) {
+                
+                message.delete();
+                setTimeout(async => {
+                    message.channel.send({embeds:[{
+                    description:`Hey! ${message.author}, bu kelime bu sunucda yasaklanmış!`}]}).then((msg) => {
+                        setTimeout(async () => {
+                            await msg.delete()
+                        }, 500);
+                    })
+                }, 500);
+                return;
+            }
         }
     })
+
 }

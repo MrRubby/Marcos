@@ -1,10 +1,16 @@
-import { Client, Collection, GatewayIntentBits, Partials } from "discord.js"
+import { Client, Collection, GatewayIntentBits, Partials, } from "discord.js"
 import { readdirSync } from "fs"
+import mongoose from "mongoose"
 import i18next from "i18next"
 import translationBackend from "i18next-fs-backend"
-import mongoose from "mongoose"
 import * as database from "./utils/database/mongoose.js"
 import 'dotenv/config'
+
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const CONFİG = require('./config.json');
+
 const client = new Client({
     partials: [
         Partials.Channel,
@@ -19,21 +25,22 @@ const client = new Client({
         GatewayIntentBits.GuildIntegrations,
         GatewayIntentBits.GuildVoiceStates,
         GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildPresences,
     ]
 })
 
-// Assignment
+// Assignment (Görevlendirme
 client.commands = new Collection
-client.embed = await import("./utils/Bot/embeds.js").then(e => e.default)
 client.database = database
 
-// Initialize Database
-await mongoose.connect(process.env.MONGO)
-.then(() => { 
-    console.log("The database has been successfully connected!")
+// Initialize Database (Veritabanı Başlatma)
+await mongoose.connect(CONFİG.BOT.MONGO || process.env.MONGO)
+.then(() => {
+    console.log("Database connection was successful")
 })
 
-// Initialize Multi Language
+// Initialize Multi Language (Çoklu Dili Başlatma)
 await i18next
     .use(translationBackend)
     .init({
@@ -46,15 +53,13 @@ await i18next
         }
     })
 
-// Event Loader
+// Event Loader (Olay Yükleyici)
 readdirSync("./events").forEach(async file => {
-
     const event = await import(`./events/${file}`).then(m => m.default)
     event(client)
-
 })
 
-// Command Loader
+// Command Loader (Komut Yükleyici)
 readdirSync("./commands").forEach(category => {
 
     readdirSync(`./commands/${category}`).forEach(async file => {
@@ -62,4 +67,5 @@ readdirSync("./commands").forEach(category => {
         client.commands.set(command.data.name, command)
     })
 })
-client.login(process.env.TOKEN)
+
+client.login(CONFİG.BOT.TOKEN || process.env.TOKEN)

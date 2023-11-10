@@ -5,6 +5,7 @@ export const fetch = async (guild_id) => {
     let guild_db = await guilds_Schema.findOne({ guild_id })
 
     if(guild_id) return guild_db
+    
     else {
         guild_db = new guilds_Schema({ guild_id: guild_id })
 

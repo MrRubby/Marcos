@@ -24,4 +24,10 @@ export default mongoose.model("guilds", new mongoose.Schema({
     // Initialize Autorole
     autorole_id: { type: String, unique: true, required: true},
     autorolesystem: { type: Boolean, unique: true, required: true},
+    autorolelog_id: { type: String, unique: true, required: true},
+    // Initialize Filter
+    kfrEngel: { type: Boolean, unique: true, required: true},
+    lnkEngl: { type: Boolean, unique: true, required: true},
+    kelimeEngl: { type: Boolean, unique: true, required: true},
+    bKlm: { type: String, unique: true, required: true},
 }))

@@ -1,15 +1,23 @@
 import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
 import { t } from "i18next"
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const CONFİG = require('../../config.json');
 
 export const data = {
-    name: "info",
+    name: "help",
     description: "Do you need help?",
 
     execute(interaction) {
 
+        const prefix = CONFİG.BOT.PREFIX
+
         const response = new EmbedBuilder()
-        .setTitle(`${t("info.information_title", {lng: interaction.locale})} ${interaction.guild.name}`)
-        .setDescription(t("info.information_desc", {lng: interaction.locale}) )
+        .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL()})
+        .setThumbnail(interaction.client.user.displayAvatarURL())
+        .setColor("Purple")
+        .setDescription(t("info.information_desc", {lng: interaction.locale, prefix: prefix}) )
         .addFields([
             { name: 
                 t("info.fields_name", {lng: interaction.locale}), value: `[${t("info.fields_value", {lng: interaction.locale})}](https://mrrubby.github.io/marco/commands/index.html)
@@ -21,9 +29,17 @@ export const data = {
         const row1 = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
-            .setLabel("Invite Marco'S")
+            .setLabel("Invite Me")
             .setStyle(ButtonStyle.Link)
-            .setURL("https://discord.com/oauth2/authorize?client_id=580189198250803201&permissions=8&scope=applications.commands%20bot")
+            .setURL(CONFİG.BOT.INVATE_LINK),
+            new ButtonBuilder()
+            .setLabel("Support Server")
+            .setStyle(ButtonStyle.Link)
+            .setURL(CONFİG.BOT.SUPPORT_SERVER),
+            new ButtonBuilder()
+            .setLabel("Vote Me")
+            .setStyle(ButtonStyle.Link)
+            .setURL(CONFİG.BOT.VOTE_LINK)
         )
 
         interaction.reply({ embeds: [response], components: [row1]})

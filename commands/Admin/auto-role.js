@@ -1,10 +1,10 @@
 import { EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
-import guilds_Schema from "../../utils/database/guilds_Schema.js"
+import database from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "autorole-setting",
-    description: "Sets the automatic role system",
+    description: "Make installation of the automatic role system",
 
     async execute(interaction) {
 
@@ -17,7 +17,7 @@ export const data = {
         switch(SubCmd){
             case "set": {
                 
-                await guilds_Schema.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { autorole_id: autoRole.id, autorolesystem: true }}, { upsert: true })
+                await database.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { autorole_id: autoRole.id, autorolesystem: true }}, { upsert: true })
                 .then(() => {
                     interaction.reply({ content: t("autorole.set_succes", {lng: interaction.locale}) })
                 }).catch(err => { 
@@ -28,10 +28,10 @@ export const data = {
             }
             case "reset": {
 
-                const { autorolesystem } = await guilds_Schema.findOne({ guild_id: interaction.guild.id }) || { autorolesystem: false }
-                if(!autorolesystem) return interaction.reply({ content: "sistem kapalı durumda" })
+                const { autorolesystem } = await database.findOne({ guild_id: interaction.guild.id }) || { autorolesystem: false }
+                if(!autorolesystem) return interaction.reply({ content: t("autorole.error", {lng: interaction.locale}) })
 
-                await guilds_Schema.findOneAndUpdate({ guild_id: interaction.guild.id}, { $set: { autorolesystem: false, autorole_id: null}}, { upsert: true} )
+                await database.findOneAndUpdate({ guild_id: interaction.guild.id}, { $set: { autorolesystem: false, autorole_id: null}}, { upsert: true} )
                 .then(() => {
                     interaction.reply({ content: t("autorole.res_succes", {lng: interaction.locale}) })
                 }).catch(err => { 
@@ -50,18 +50,25 @@ export const slash_data = {
     type: 1,
     options:[
         {
-          name:"set",description:"make an installation",type:1,options:[
+          name:"set",description:"You can set the automatic role system",type:1,options:[
             {
                 name:"role",
-                description:"Please specify the role to be assigned to users",
+                description:"Specify the role to be assigned to users",
                 type:8,
                 required:true
+            },
+            {
+                name:"channel",
+                description:"Specify the channel for automatic role log output",
+                type:7,
+                required:true,
+                channel_types: [0]
             }
           ]
         },
         {
             name:"reset",
-            description:"Turns off the automatic role system",
+            description:"Switches off the automatic role system",
             type:1
         }
         

@@ -1,0 +1,5 @@
+{
+    "missing_permissions": "Bu komutu kullanmak için `{{permrole}}` yetkisine sahip olmalısınız.`",
+    "Unexpected_error": "Beklenmedik bir hata oluştu. Lütfen geliştirici ekibiyle iletişime geçin ve onlara bildirin.",
+    "cooldown_error": "Bu komutu `{{cooldown}}` saniye sonra tekrar kullanabilirsiniz!"
+}

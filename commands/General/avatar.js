@@ -28,7 +28,7 @@ export const slash_data = {
     options: [
         {
             name: "kullanıcı",
-            description: "Lütfen kullanıcı belirtin",
+            description: "Specify the user whose avatar you want to rotate",
             type: 6
         }
     ]

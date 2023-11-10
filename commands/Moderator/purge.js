@@ -3,7 +3,7 @@ import { t } from "i18next"
 
 export const data = {
     name: "purge",
-    description: "Deletes messages",
+    description: "You can delete any amount of messages",
 
     execute(interaction) {
 
@@ -27,7 +27,7 @@ export const slash_data = {
     options: [
         {
             name: "amount",
-            description: "Specify the quantity",
+            description: "Specify the quantity (Max 100)",
             type: 4,
             required: true,
             min_value: 1,

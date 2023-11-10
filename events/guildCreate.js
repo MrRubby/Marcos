@@ -1,23 +1,31 @@
 import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js"
-import guilds_Schema from "../utils/database/guilds_Schema.js"
+import database from "../utils/database/guilds_Schema.js"
+
+const { default: CONFİG } = await import("../config.json", {
+    assert: {
+      type: "json",
+    },
+  });
+
 
 export default client => {
 
     client.on("guildCreate", async guild => {
 
-        const channelAdd = client.channels.cache.get("1121447101134557205")
+        const channelAdd = client.channels.cache.get(CONFİG.LOG.GUILD_CREATE)
         const owner = await client.users.fetch(guild.ownerId)
       
         const guildAddembed = new EmbedBuilder()
-        .setTitle("Yeni Sunucu")
+        .setTitle("New Server")
+        .setColor("Green")
         .setThumbnail(client.user.avatarURL({ dynamic: true }))
-        .setDescription("Aramıza yeni bir sunucu katıldı. Sunucuya ait özellikler aşağıda bulunmaktadır.")
+        .setDescription("A new server has joined us. with the following features.")
         .addFields([
-          {name: `Sunucu adı`, value: `${guild.name}`},
-          {name: `Sunucu kimliği`, value: `${guild.id}`},
-          {name: `Sunucu sahibi`, value: `${owner.tag}`},
-          {name: `Sunucu sahibi kimliği`, value: `${owner.id}`},
-          {name: `Sunucu üye sayısı`, value: `${guild.memberCount}`}
+          {name: `Server name`, value: `${guild.name}`},
+          {name: `Server ID`, value: `${guild.id}`},
+          {name: `Server owner`, value: `${owner.tag}`},
+          {name: `Server owner ID`, value: `${owner.id}`},
+          {name: `Server member count`, value: `${guild.memberCount}`}
         ])
         channelAdd.send({embeds: [guildAddembed]})
 
@@ -39,9 +47,9 @@ export default client => {
 
         const embed = new EmbedBuilder()
         .setTitle(guild.name)
-        .setDescription(`Thank you for adding me to  your server!
-        - Don't forget to read our privacy policy before using our bot!
-        - Multi-language support is supported on a user-based basis, not on a server-based basis.`)
+        .setDescription(`Thank you for adding me to your server!
+        Please make sure to read our privacy policy before using our bot.
+        Please note that multi-language support is only available to individual users and not to the server as a whole.`)
         .setThumbnail(owner.avatarURL({ dynamic: true }))
 
         owner.send({ embeds: [embed], components: [row1]})

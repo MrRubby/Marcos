@@ -1,11 +1,17 @@
-import { ActivityType } from "discord.js"
-import register_commands from "../utils/Bot/register_commands.js"
+import { ActivityType, EmbedBuilder } from "discord.js"
+import register_commands from "../utils/bot/register_commands.js"
 import { joinVoiceChannel  } from '@discordjs/voice'
 import { fetch, update, fetchAll, deleteOne } from "../utils/database/mongoose.js"
 
+const { default: CONFİG } = await import("../config.json", {
+    assert: {
+      type: "json",
+    },
+  });
+
 export default client => {
 
-    client.once("ready", () => {
+    client.once("ready", async () => {
 
         register_commands(client, "global")
 
@@ -22,8 +28,8 @@ export default client => {
             client.user.setPresence({ activities: [{ name: liste[random], type: ActivityType.Watching}]})
         }, 10000)
 
-        let VoiceChannel = process.env.SECRET_VOICE_CHANNEL_ID
-        let VoiceGuild = process.env.SECRET_VOICE_GUILD_ID
+        let VoiceChannel = CONFİG.LOG.VOICE_CHANNEL_ID
+        let VoiceGuild = CONFİG.LOG.VOICE_GUILD_ID
         joinVoiceChannel({channelId: VoiceChannel, guildId: VoiceGuild,
         adapterCreator: client.guilds.cache.get(VoiceGuild).voiceAdapterCreator});
     })

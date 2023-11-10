@@ -1,15 +1,15 @@
 import { EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
-import guilds_Schema from "../../utils/database/guilds_Schema.js"
+import database from "../../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "kick",
-    description: "Kicks the user out of the server",
+    description: "Banishes the user from the server",
 
 
     async execute(interaction) {
 
-        const kickData = (await guilds_Schema.findOne({ guild_id: interaction.guild.id })) || null;
+        const kickData = (await database.findOne({ guild_id: interaction.guild.id })) || null;
         const kickRol = kickData ? kickData.kickrole_id : null;
 
         if (interaction.member.roles.cache.has(kickRol) || interaction.member.permissions.has(PermissionsBitField.Flags.KickMembers))
@@ -45,13 +45,13 @@ export const slash_data = {
     options:[
         {
           name: "user",
-          description: "Specify the user",
+          description: "Specify the user to kick from the server",
           type: 6,
           required: true
         },
         {
             name: "reason",
-            description: "specify the reason",
+            description: "Specify the reason why the user was kicked off the server",
             type: 3,
             required: true
         }
