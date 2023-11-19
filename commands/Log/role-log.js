@@ -3,7 +3,7 @@ import { t } from "i18next"
 import database from "../../utils/database/guilds_Schema.js"
 
 export const data = {
-    name: "modlog",
+    name: "rolelog",
     description: "Sets the role log channel",
 
     async execute(interaction) {
@@ -19,7 +19,7 @@ export const data = {
                 await database.updateOne({ guild_id: interaction.guild.id}, {rolelog_id: channel.id}, {upsert: true})
                 interaction.reply(t("rolelog.set_succes", {lng: interaction.locale}))
                 const setEmbed = new EmbedBuilder()
-                .setDescription(t("rolelog.set_embed", {lng: interaction}))
+                .setDescription(t("rolelog.set_embed", {lng: interaction.locale}))
                 channel.send({ embeds: setEmbed })
                 break
             }

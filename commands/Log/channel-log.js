@@ -19,7 +19,7 @@ export const data = {
                 await database.updateOne({ guild_id: interaction.guild.id}, {channellog_id: channel.id}, {upsert: true})
                 interaction.reply(t("channellog.set_succes", {lng: interaction.locale}))
                 const setEmbed = new EmbedBuilder()
-                .setDescription(t("channellog.set_embed", {lng: interaction}))
+                .setDescription(t("channellog.set_embed", {lng: interaction.locale}))
                 channel.send({ embeds: setEmbed })
                 break
             }

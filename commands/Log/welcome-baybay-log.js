@@ -3,7 +3,7 @@ import { t } from "i18next"
 import database from "../../utils/database/guilds_Schema.js"
 
 export const data = {
-    name: "modlog",
+    name: "incoming-outgoinglog",
     description: "Sets the Incoming-Outgoing log channel",
 
     async execute(interaction) {
@@ -19,8 +19,8 @@ export const data = {
                 await database.updateOne({ guild_id: interaction.guild.id}, {welcomelog_id: channel.id}, {upsert: true})
                 interaction.reply(t("welbylog.set_succes", {lng: interaction.locale}))
                 const setEmbed = new EmbedBuilder()
-                .setDescription(t("welbylog.set_embed", {lng: interaction}))
-                channel.send({ embeds: setEmbed })
+                .setDescription(t("welbylog.set_embed", {lng: interaction.locale}))
+                channel.send({ embeds: [setEmbed] })
                 break
             }
             case "reset" : {

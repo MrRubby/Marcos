@@ -1,6 +1,6 @@
 import { EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, } from "discord.js"
 import { t } from "i18next"
-import embeds from "../../utils/bot/embeds.js"
+import embeds from "../../utils/Bot/embeds.js"
 
 export const data = {
     name: "lol",
