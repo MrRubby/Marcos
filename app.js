@@ -9,7 +9,7 @@ import 'dotenv/config'
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const CONFİG = require('./config.json');
+const CONFİG = require('./utils/bot/config.json');
 
 const client = new Client({
     partials: [

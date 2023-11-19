@@ -140,8 +140,5 @@
     "klmEngel_system": "Word Blocking System",
     "kfrEngel_system": "Swearing Blocking System",
     "lnkEngel_system": "Link Blocking System",
-    "roles": "Roles",
-    "missing_permissions": "You don't have enough authority to use this command!",
-    "unexpected_error": "> An unexpected error has occurred. Please contact the developer team and inform them about the situation.",
-    "cooldown_error": "You can use this command again after `{{cooldown}}` seconds!"
+    "roles": "Roles"
 }

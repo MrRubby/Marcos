@@ -30,4 +30,12 @@ export default mongoose.model("guilds", new mongoose.Schema({
     lnkEngl: { type: Boolean, unique: true, required: true},
     kelimeEngl: { type: Boolean, unique: true, required: true},
     bKlm: { type: String, unique: true, required: true},
+    // Initialize Reaction Roles
+    role: { type: String, unique: true, required: true},
+    roleDesc: { type: String, unique: true, required: true},
+    roleEmo: { type: String, unique: true, required: true},
+    // Initialize Security
+    channelProtection: { type: Boolean, unique: true, required: true},
+    channelProtectionLog: { type: String, unique: true, required: true},
+    channelProtectionUserPoint: { type: String, unique: true, require: true},
 }))

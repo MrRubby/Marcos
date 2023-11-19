@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js"
 import database from "../utils/database/guilds_Schema.js"
 
-const { default: CONFİG } = await import("../config.json", {
+const { default: CONFİG } = await import("../utils/bot/config.json", {
   assert: {
     type: "json",
   },

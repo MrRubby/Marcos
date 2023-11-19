@@ -29,12 +29,12 @@ export default client => {
             { name: t("channelCreate.channelID", {ns: "common", lng: channel.guild.locale}), value: `${channel.id}`, inline: true },
             { name: t("channelCreate.createTime", {ns: "common", lng: channel.guild.locale}), value: `<t:${parseInt(channel.createdTimestamp / 1000)}:R>`, inline: true },
             { name: t("channelCreate.NSFW", {ns: "common", lng: channel.guild.locale}) ,value:`${channel.nsfw ? t("open", {ns: "common", lng: channel.guild.locale}) : t("close", {ns: "common", lng: channel.guild.locale})}`,inline:true},
-          ])
-          .setColor("Green")
-          .setFooter({text:`${channel.guild.name}`})
-          .setTimestamp()
+        ])
+        .setColor("Green")
+        .setFooter({text:`${channel.guild.name}`})
+        .setTimestamp()
 
-          logs.send({ embeds: [response]})
+        logs.send({ embeds: [response]})
 
     })
 

@@ -16,6 +16,9 @@ export const data = {
 
         switch(SubCmd){
             case "set": {
+
+                if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator))
+                return interaction.reply({ content: t("bot_missing_permissions", {ns: "error", lng: interaction.locale}) })
                 
                 await database.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { autorole_id: autoRole.id, autorolesystem: true }}, { upsert: true })
                 .then(() => {

@@ -16,7 +16,7 @@
     "Önemli Notlar" : {
         "Premium" : "Premium sistemi eklendikten sonra destekleyici sistemler eklenmelidir. Örneğin günlük bonus olarak coin kazanılır ve coin karşılığında Premium alınabilir.",
         "Guild Member Intent" : "Intent'in alınabilmesi için otorol sistemi özelleştirilecek ve sayaç sistemi eklenecek.",
-        "Embed" : "Bazı komutlarda embed yerine content sistemi mevcut. Gerekli olanlar embed olarak değiştirilecek",
+        "Embed" : "Bazı komutlarda embed yerine content sistemi mevcut. Gerekli olanlar embed olarak değiştirilecek"
         // "Log Bilgilendirme" : "Logların ayarlandığı kanala tek tek kanala mesaj atacak örneğin (Otorol kanalı başarıyla bu kanala ayarlandı. Bu kanala botlara rolün verildiği bildirilecektir.)"
     },
 

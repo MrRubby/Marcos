@@ -3,7 +3,7 @@ import { t } from "i18next"
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const CONFİG = require('../../config.json');
+const CONFİG = require('../../utils/bot/config.json');
 
 export const data = {
     name: "help",

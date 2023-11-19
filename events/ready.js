@@ -3,7 +3,7 @@ import register_commands from "../utils/bot/register_commands.js"
 import { joinVoiceChannel  } from '@discordjs/voice'
 import { fetch, update, fetchAll, deleteOne } from "../utils/database/mongoose.js"
 
-const { default: CONFİG } = await import("../config.json", {
+const { default: CONFİG } = await import("../utils/bot/config.json", {
     assert: {
       type: "json",
     },
