@@ -11,7 +11,7 @@ export default client => {
 
     client.on("messageCreate", async message => {
 
-        if (message.author.bot) return;
+        if (message.author?.bot) return;
         if(message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return; 
 
         const db = await database.findOne({ guild_id: message.guild.id })
@@ -30,7 +30,7 @@ export default client => {
                 await message.delete();
                 setTimeout(async => {
                     message.channel.send({embeds:[{
-                    description:`Hey! ${message.author}, ben varken küfür etmene izin vermem!`}]}).then((msg) => {
+                    description:t("kfrEngel.detected.description", {lng: message.locale, member: message.author})}]}).then((msg) => {
                         setTimeout(async () => {
                             await msg.delete()
                         }, 500);
@@ -38,7 +38,7 @@ export default client => {
                 }, 500);
                 return;
             }
-        } else { return }
+        }
         if(lnkEngel){
             let blacklist = linkler;
             let foundInText = false;
@@ -49,7 +49,7 @@ export default client => {
                 message.delete();
                 setTimeout(async => {
                     message.channel.send({embeds:[{
-                    description:`Hey! ${message.author}, ben varken sunuda reklam yapmana izin vermem!`}]}).then((msg) => {
+                    description:t("lnkEngel.detected.description", { lng: message.locale, member: message.author})}]}).then((msg) => {
                         setTimeout(async () => {
                             await msg.delete()
                         }, 500);
@@ -57,7 +57,7 @@ export default client => {
                 }, 500);
                 return;
             }
-        } else { return }
+        }
         if(kelimeEngl){
                 
             let blacklist = bKlm;
@@ -70,7 +70,7 @@ export default client => {
                 message.delete();
                 setTimeout(async => {
                     message.channel.send({embeds:[{
-                    description:`Hey! ${message.author}, bu kelime bu sunucda yasaklanmış!`}]}).then((msg) => {
+                    description:t("klmEngel.detected.description", { lng: message.locale, member: message.author})}]}).then((msg) => {
                         setTimeout(async () => {
                             await msg.delete()
                         }, 500);
@@ -78,7 +78,7 @@ export default client => {
                 }, 500);
                 return;
             }
-        } else { return }
+        }
     })
 
 }

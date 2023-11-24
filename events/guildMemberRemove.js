@@ -14,7 +14,7 @@ export default client => {
         channel.send({
             embeds: [new EmbedBuilder()
               .setAuthor({name:member.user.tag,iconURL: member.user.avatarURL()})
-              .setDescription(t("guildMemberRemove.descripton", { ns: "common", lng: member.guild.locale, user: member.user.tag}))
+              .setDescription(t("guildMemberRemove.description", { ns: "event", lng: member.guildLocale, user: member.user.tag}))
               .setThumbnail(member.user.avatarURL({dynamic:true}))
               .setColor("#2ACAEA")
               .setFooter({text:`${member.guild.name}`})

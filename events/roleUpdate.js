@@ -6,12 +6,6 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const yetkiler = require('../utils/Bot/perm.json');
 
-/*const { default: yetkiler } = await import("../utils/Bot/perm.json", {
-    assert: {
-      type: "json",
-    },
-  });*/
-
 export default client => {
 
     client.on("roleUpdate", async (oldRole, newRole) => {
@@ -23,25 +17,25 @@ export default client => {
 
         channel.send({
             embeds: [new EmbedBuilder()
-            .setTitle(t("roleUpdate.title", { ns: "common", lng: newRole.guild.locale}))
-            .setDescription(t("roleUpdate.description", { ns: "common", lng: newRole.guild.locale}))
+            .setTitle(t("roleUpdate.title", { ns: "event", lng: newRole.guildLocale}))
+            .setDescription(t("roleUpdate.description", { ns: "event", lng: newRole.guildLocale}))
             .setThumbnail(oldRole.client.user.avatarURL({ dynamic: true}))
             .addFields(
-            {name : t("roleUpdate.roleName", { ns: "common", lng: newRole.guild.locale}) ,value:oldRole.name,inline:true},
-            {name : t("roleUpdate.roleColor", { ns: "common", lng: newRole.guild.locale}) ,value:`${oldRole.hexColor}`,inline:true},
-            {name : t("roleUpdate.roleIcon", { ns: "common", lng: newRole.guild.locale}) ,value:oldRole.iconURL() ? `${t("roleUpdate.view", { ns: "common", lng: newRole.guild.locale})}(${oldRole.iconURL()})` : t("roleUpdate.noneIcon", { ns: "common", lng: newRole.guild.locale}) ,inline:true},
+            {name : t("roleUpdate.addFields.roleName", { ns: "event", lng: newRole.guildLocale}) ,value:oldRole.name,inline:true},
+            {name : t("roleUpdate.addFields.roleColor", { ns: "event", lng: newRole.guildLocale}) ,value:`${oldRole.hexColor}`,inline:true},
+            {name : t("roleUpdate.addFields.roleIcon", { ns: "event", lng: newRole.guildLocale}) ,value:oldRole.iconURL() ? `${t("roleUpdate.view", { ns: "event", lng: newRole.guildLocale})}(${oldRole.iconURL()})` : t("roleUpdate.addFields.noneIcon", { ns: "event", lng: newRole.guildLocale}) ,inline:true},
                 
   
-            {name : t("roleUpdate.roleName2", { ns: "common", lng: newRole.guild.locale}) ,value:newRole.name,inline:true},
-            {name : t("roleUpdate.roleColor2", { ns: "common", lng: newRole.guild.locale}) ,value:`${newRole.hexColor}`,inline:true},
-            {name : t("roleUpdate.roleIcon2", { ns: "common", lng: newRole.guild.locale}) ,value:newRole.iconURL() ? `${t("roleUpdate.view", { ns: "common", lng: newRole.guild.locale})}(${newRole.iconURL()})` : t("roleUpdate.noneIcon", { ns: "common", lng: newRole.guild.locale}) ,inline:true},
-            {name : t("roleUpdate.update", { ns: "common", lng: newRole.guild.locale}) ,value:`<t:${parseInt(new Date() / 1000)}:R>`,inline:true},
-            {name : t("roleUpdate.updateAuth", { ns: "common", lng: newRole.guild.locale}) ,value:`${t("roleUpdate.addAuth", { ns: "common", lng: newRole.guild.locale})}
+            {name : t("roleUpdate.addFields.roleName2", { ns: "event", lng: newRole.guildLocale}) ,value:newRole.name,inline:true},
+            {name : t("roleUpdate.addFields.roleColor2", { ns: "event", lng: newRole.guildLocale}) ,value:`${newRole.hexColor}`,inline:true},
+            {name : t("roleUpdate.addFields.roleIcon2", { ns: "event", lng: newRole.guildLocale}) ,value:newRole.iconURL() ? `${t("roleUpdate.addFields.view", { ns: "event", lng: newRole.guildLocale})}(${newRole.iconURL()})` : t("roleUpdate.addFields.noneIcon", { ns: "event", lng: newRole.guildLocale}) ,inline:true},
+            {name : t("roleUpdate.addFields.update", { ns: "event", lng: newRole.guildLocale}) ,value:`<t:${parseInt(new Date() / 1000)}:R>`,inline:true},
+            {name : t("roleUpdate.addFields.updateAuth", { ns: "event", lng: newRole.guildLocale}) ,value:`${t("roleUpdate.addFields.addAuth", { ns: "event", lng: newRole.guildLocale})}
             ${newRole.permissions.toArray().map(x => {
                 if(oldRole.permissions.toArray().includes(x)) return;
                 return yetkiler[x];
             }).join(" ")}
-            ${t("roleUpdate.removeAuth", { ns: "common", lng: newRole.guild.locale})}
+            ${t("roleUpdate.addFields.removeAuth", { ns: "event", lng: newRole.guildLocale})}
             ${
                 oldRole.permissions.toArray().map(x => {
                  if(newRole.permissions.toArray().includes(x)) return;

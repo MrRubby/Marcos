@@ -13,14 +13,14 @@ export default client => {
 
         channel.send({
             embeds: [new EmbedBuilder()
-            .setTitle(t("roleCreate.title", { ns: "common", lng: role.guild.locale}))
-            .setDescription(t("roleCreate.description", { ns: "common", lng: role.guild.locale}))
+            .setTitle(t("roleCreate.title", { ns: "event", lng: role.guildLocale}))
+            .setDescription(t("roleCreate.description", { ns: "event", lng: role.guildLocale}))
             .setThumbnail(role.client.user.avatarURL({ dynamic: true}))
             .addFields(
-            {name : t("roleCreate.addFields.roleName", { ns: "common", lng: role.guild.locale}) ,value:role.name,inline:true},
-            {name : t("roleCreate.addFields.roleColor", { ns: "common", lng: role.guild.locale}) ,value:`${role.hexColor}`,inline:true},
-            {name : t("roleCreate.addFields.roleIcon", { ns: "common", lng: role.guild.locale}) ,value:role.iconURL() ? `${t("roleCreate.addFields.roleName", { ns: "common", lng: role.guild.locale})}(${role.iconURL()})` : t("roleCreate.addFields.noneIcon", { ns: "common", lng: role.guild.locale}) ,inline:true},
-            {name : t("roleCreate.addFields.createTime", { ns: "common", lng: role.guild.locale}) ,value:`<t:${parseInt(role.createdTimestamp / 1000)}:R>`,inline:true})
+            {name : t("roleCreate.addFields.roleName", { ns: "event", lng: role.guildLocale}) ,value:role.name,inline:true},
+            {name : t("roleCreate.addFields.roleColor", { ns: "event", lng: role.guildLocale}) ,value:`${role.hexColor}`,inline:true},
+            {name : t("roleCreate.addFields.roleIcon", { ns: "event", lng: role.guildLocale}) ,value:role.iconURL() ? `${t("roleCreate.addFields.roleName", { ns: "event", lng: role.guildLocale})}(${role.iconURL()})` : t("roleCreate.addFields.noneIcon", { ns: "event", lng: role.guildLocale}) ,inline:true},
+            {name : t("roleCreate.addFields.createTime", { ns: "event", lng: role.guildLocale}) ,value:`<t:${parseInt(role.createdTimestamp / 1000)}:R>`,inline:true})
       
             .setColor("Green")
             .setFooter({text:`${role.guild.name}`})

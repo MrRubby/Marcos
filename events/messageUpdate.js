@@ -10,7 +10,7 @@ export default client => {
 
     client.once("messageUpdate", async (oldMessage, newMessage) => {
 
-        if (oldMessage.author.bot) return;
+        if (oldMessage.author?.bot) return;
         if(oldMessage.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
         const { kfrEngel, lnkEngl, messagelog, kelimeEngl } = (await database.findOne({ guild_id: oldMessage.guild.id })) || { kelimeEngl: false, messagelog_id: null, kfrEngel: false, lnkEngl: false };
         if (!messagelog) return;

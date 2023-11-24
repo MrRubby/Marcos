@@ -5,7 +5,7 @@ export default client => {
 
   client.on("messageDelete", async message => {
 
-    if(message.author.bot) return;
+    if(message.author?.bot) return;
     const { messagelog } = await database.findOne({ guild_id: message.guildId }) || { messagelog_id: null };
     if (!messagelog) return;
     if(message.channelId == messagelog) return;

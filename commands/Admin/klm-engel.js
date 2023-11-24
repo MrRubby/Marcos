@@ -1,4 +1,4 @@
-import { EmbedBuilder, PermissionsBitField } from "discord.js"
+import { Embed, EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
 import database from "../../utils/database/guilds_Schema.js"
 
@@ -20,57 +20,67 @@ export const data = {
                 if(durum === "on"){
 
                     await database.updateOne({ guild_id: interaction.guild.id}, {kelimeEngl: true}, {upsert: true})
-                    interaction.reply("sistem aktif embed")
+                    const klmOn = new EmbedBuilder()
+                    .setTitle(t("klmEngel.on.title", {lng: interaction.locale}))
+                    .setDescription(t("klmEngel.on.description", {lng: interaction.locale}))
+                    .setThumbnail(interaction.guild.iconURL())
+                    .setColor("Purple")
+                    interaction.reply({ embeds: [klmOn] })
 
                 } else if(durum === "off") {
 
                     await database.updateOne({ guild_id: interaction.guild.id}, {kelimeEngl: false}, {upsert: true})
-                    interaction.reply("sistem kapalı embed")
-
+                    const klmOff = new EmbedBuilder()
+                    .setTitle(t("klmEngel.off.title", {lng: interaction.locale}))
+                    .setDescription(t("klmEngel.off.description", {lng: interaction.locale}))
+                    .setThumbnail(interaction.guild.iconURL())
+                    .setColor("Purple")
+                    interaction.reply({ embeds: [klmOff] })
                 }
                 break;
             }
             case "add" : {
                 let { kelimeEngl } = await database.findOne({ guild_id: interaction.guild.id })
-                if(!kelimeEngl) return interaction.reply("sistem aktif değil embed")
+                if(!kelimeEngl) return interaction.reply({ content: t("klmEngel.add.nonesetup", {lng: interaction.locale}), ephemeral: true})
                 const kelime = interaction.options.getString("word")
                 const d = await database.findOne({ guild_id: interaction.guild.id, bKlm: kelime })
-                if(d) return interaction.reply("kelime sistemde ekli embed")
+                if(d) return interaction.reply({ content: t("klmEngel.add.noneadd", {lng: interaction.locale}), ephemeral: true})
                 await database.updateOne({ guild_id: interaction.guild.id}, {$push: {bKlm: kelime}}, {upsert: true})
-                interaction.reply(`\`${kelime}\` kelimesi, yasaklanan kelimelere eklendi`)
+                interaction.reply({ content: t("klmEngel.add.added", { lng: interaction.locale, word: kelime}), ephemeral: true})
                 break;
             }
             case "del" : {
                 let { kelimeEngl } = await database.findOne({ guild_id: interaction.guild.id })
-                if(!kelimeEngl) return interaction.reply("sistem aktif değil embed")
+                if(!kelimeEngl) return interaction.reply({ content: t("klmEngel.del.nonesetup", {lng: interaction.locale}), ephemeral: true})
                 const kelime = interaction.options.getString("word")
                 const d = await database.findOne({ guild_id: interaction.guild.id, bKlm: kelime })
-                if(!d) return interaction.reply("kelime sistemde değil embed")
+                if(!d) return interaction.reply({ content: t("klmEngel.del.nonedel", {lng: interaction.locale}), ephemeral: true})
                 await database.updateOne({ guild_id: interaction.guild.id}, {$pull: {bKlm: kelime}}, {upsert: true})
                 interaction.reply(`\`${kelime}\` kelimesi, yasaklanan kelimerden silindi`)
+                interaction.reply({ content: t("klmEngel.del.del", {lng: interaction.locale, word: kelime}), ephemeral: true})
                 break;
             }
             case "filter-list" : {
                 let { kelimeEngl } = await database.findOne({ guild_id: interaction.guild.id })
-                if(!kelimeEngl) return interaction.reply("sistem aktif değil embed")
+                if(!kelimeEngl) return interaction.reply({ content: t("klmEngel.filter.nonesetup", {lng: interaction.locale}), ephemeral: true})
                 const db = await database.findOne({ guild_id: interaction.guild.id })
                 const bKlm = db.bKlm || null
-                if(!bKlm == null ) return interaction.reply("sistemde hiç kelime yok embed")
+                if(!bKlm == null ) return interaction.reply({ content: t("klmEngel.filter.nonefilter", {lng: interaction.locale}), ephemeral: true})
                 //if(d.bKlm.length <= 0) return interaction.reply("sistemde kelime yok 2 embed")
                 const kelimeler = bKlm.join(", ")
                 const KelimeList = new EmbedBuilder()
-                .setTitle(`Yasaklı Kelime Listesi`)
+                .setTitle(t("klmEngel.filter.filterTitle", {lng: interaction.locale}))
                 .setDescription(`\`${kelimeler}\``)
                 interaction.reply({ embeds: [KelimeList] })
                 break;
             }
             case "filter-reset" : {
                 let { kelimeEngl } = await database.findOne({ guild_id: interaction.guild.id })
-                if(!kelimeEngl) return interaction.reply("sistem aktif değil embed")
+                if(!kelimeEngl) return interaction.reply({ content: t("klmEngel.filter.nonesetup", {lng: interaction.locale}), ephemeral: true})
                 await database.updateOne({ guild_id: interaction.guil.id}, {$set: {bKlm: []}}, {upsert: true})
                 const resetEmbed = new EmbedBuilder()
-                .setTitle(`Kelime Listesi Temizlendi`)
-                .setDescription(`Artık sistemde hiç kelime yok`)
+                .setTitle(t("klmEngel.filter-reset.title", {lng: interaction.locale}))
+                .setDescription(t("klmEngel.filter-reset.description", {lng: interaction.locale}))
                 interaction.reply({ embeds: [resetEmbed] })
                 break;
             }

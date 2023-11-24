@@ -102,7 +102,10 @@
         "off" : {
             "title" : "Profanity Blocking System",
             "description" : "The profanity blocking system has been disabled on this server."
-        } 
+        },
+        "detected" : {
+            "description" : "Hey! {{member}}, I won't let you swear on my watch!"
+        }
     },
     "lnkEngel" : {
         "on" : {
@@ -112,7 +115,43 @@
         "off" : {
             "title" : "Ad Blocking System",
             "description" : "Ad blocking is disabled on this server."
-        } 
+        },
+        "detected" : {
+            "description" : "Hey! {{member}}, I won't let you advertise on the server while I'm here!"
+        }
+    },
+    "klmEngel" : {
+        "on" : {
+            "title" : "Word Blocking System",
+            "description" : "Word blocking is enabled on this server."
+        },
+        "off" : {
+            "title" : "Word Blocking System",
+            "description" : "Word blocking is disabled on this server."
+        },
+        "detected" : {
+            "description" : "Hey! {{member}}, this word is banned on this server!"
+        },
+        "add" : {
+            "nonesetup": "You cannot use this command because the word blocking system is not active",
+            "noneadd" : "The specified word is in the blocking system.",
+            "added": "The word **{{word}}** has been added to the filter. This word will no longer be available on the server"
+        },
+        "del" : {
+            "nonesetup": "You cannot use this command because the word blocking system is not active",
+            "nonedel": "The specified word was not found in the filter system.",
+            "del": "The word **{{word}}** was successfully deleted on the filter."
+        },
+        "filter" : {
+            "nonesetup": "You cannot use this command because the word blocking system is not active",
+            "nonefilter": "There is no word in the filter system.",
+            "filterTitle" : "List of banned words"
+        },
+        "filter-reset" : {
+            "nonesetup": "You cannot use this command because the word blocking system is not active",
+            "title": "Word blocking filter cleaned",
+            "description": "The word blocking system will not work until new words are added to the filter."
+        }
     },
     "ping": {
         "discord_latency": "Discord Delay",
@@ -121,5 +160,8 @@
         "message_response_speed": "Message Response Speed",
         "apı_response_speed": "API Response Speed",
         "reply_message": "You can see the delay information of the system"
+    },
+    "report": {
+        "submited": "Your report has been submited"
     }
 }

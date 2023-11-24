@@ -20,7 +20,7 @@ export const data = {
                 interaction.reply(t("channellog.set_succes", {lng: interaction.locale}))
                 const setEmbed = new EmbedBuilder()
                 .setDescription(t("channellog.set_embed", {lng: interaction.locale}))
-                channel.send({ embeds: setEmbed })
+                channel.send({ embeds: [setEmbed] })
                 break
             }
             case "reset" : {

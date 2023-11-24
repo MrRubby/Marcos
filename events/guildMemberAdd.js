@@ -20,8 +20,7 @@ export default client => {
             channel.send({
             embeds: [new EmbedBuilder()
             .setAuthor({name:member.user.tag,iconURL: member.user.avatarURL()})
-            .setDescription(`**User ${member}** has joined the server!
-            Account Creation Date: <t:${parseInt(member.user.createdTimestamp / 1000)}:R>`)
+            .setDescription(t("guildMemberAdd.description", { ns: "event", lng: member.guildLocale, user: member, time: `<t:${parseInt(member.user.createdTimestamp / 1000)}:R>`}))
             .setThumbnail(member.user.avatarURL({dynamic:true}))
             .setColor("#2ACAEA")
             .setFooter({text:`${member.guild.name}`})
@@ -36,8 +35,7 @@ export default client => {
             channel.send({
             embeds: [new EmbedBuilder()
             .setAuthor({name:member.user.tag,iconURL: member.user.avatarURL()})
-            .setDescription(`**User ${member}** has joined the server!
-            Account Creation Date: <t:${parseInt(member.user.createdTimestamp / 1000)}:R>`)
+            .setDescription(t("guildMemberAdd.description", { ns: "event", lng: member.guildLocale, user: member, time: `<t:${parseInt(member.user.createdTimestamp / 1000)}:R>`}))
             .setThumbnail(member.user.avatarURL({dynamic:true}))
             .setColor("#2ACAEA")
             .setFooter({text:`${member.guild.name}`})

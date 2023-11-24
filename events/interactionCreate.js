@@ -40,7 +40,7 @@ export default client => {
             .setFooter({ text: `Report Bug System`})
 
             await channel.send({ embeds: [reportEmbed]}).catch(err => {})
-            await interaction.reply({ content: `Your report has been submited`, ephemeral: true })
+            await interaction.reply({ content: t("report.submited", { lng: interaction.locale }), ephemeral: true })
 
         }
 
@@ -50,11 +50,11 @@ export default client => {
 
         // Cooldown Control (Bekleme Süresi Kontrolü)
         const cooldown = cooldown_control(command, interaction.user.id)
-        if (cooldown) return interaction.reply(t("cooldown_error", {ns: "common", lng: interaction.locale, cooldown: cooldown}))
+        if (cooldown) return interaction.reply(t("cooldown_error", {ns: "error", lng: interaction.locale, cooldown: cooldown}))
         try {
             command.data.execute(interaction)
         } catch(e) {
-            interaction.reply(t("unexpected_error", {ns: "common", lng: interaction.guild.locale}))
+            interaction.reply(t("unexpected_error", {ns: "error", lng: interaction.locale}))
             // If an error is encountered during execution, the system will inform the user of the issue and present the error specifics on the console.
             // Yürütme sırasında bir hatayla karşılaşılırsa, sistem kullanıcıyı sorun hakkında bilgilendirecek ve hata ayrıntılarını konsolda sunacaktır.
             console.log(e)

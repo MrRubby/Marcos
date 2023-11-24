@@ -102,7 +102,10 @@
         "off" : {
             "title" : "Küfür Engelleme Sistemi",
             "description" : "Küfür engelleme sistemi bu sunucuda pasif edildi."
-        } 
+        },
+        "detected" : {
+            "description" : "Hey! {{member}}, benim gözetimimde küfretmene izin vermeyeceğim!"
+        }
     },
     "lnkEngel" : {
         "on" : {
@@ -112,7 +115,43 @@
         "off" : {
             "title" : "Reklam Engelleme Sistemi",
             "description" : "Reklam engelleme sistemi bu sunucuda pasif edildi."
-        } 
+        },
+        "detected" : {
+            "description" : "Hey! {{member}}, ben buradayken sunucuda reklam yapmana izin vermeyeceğim!"
+        }
+    },
+    "klmEngel" : {
+        "on" : {
+            "title" : "Kelime Engelleme Sistemi",
+            "description" : "Bu sunucuda kelime engelleme etkinleştirilmiştir."
+        },
+        "off" : {
+            "title" : "Kelime Engelleme Sistemi",
+            "description" : "Bu sunucuda kelime engelleme sistemi devre dışı bırakılmıştır."
+        },
+        "detected" : {
+            "description" : "Hey! {{member}}, bu kelime bu sunucuda yasaklandı!"
+        },
+        "add" : {
+            "nonesetup": "Kelime engelleme sistemi etkin olmadığı için bu komutu kullanamazsınız",
+            "noneadd" : "Belirtilen sözcük engelleme sistemindedir.",
+            "added": "Filtreye **{{word}}** kelimesi eklendi. Bu kelime artık sunucuda kullanılamayacak"
+        },
+        "del" : {
+            "nonesetup": "Kelime engelleme sistemi etkin olmadığı için bu komutu kullanamazsınız",
+            "nonedel": "Belirtilen sözcük filtre sisteminde bulunamadı.",
+            "del": "Filtre üzerinde **{{word}}** sözcüğü başarıyla silindi."
+        },
+        "filter" : {
+            "nonesetup": "Kelime engelleme sistemi etkin olmadığı için bu komutu kullanamazsınız",
+            "nonefilter": "Filtre sisteminde kelime yok.",
+            "filterTitle" : "Yasaklı kelimeler listesi"
+        },
+        "filter-reset" : {
+            "nonesetup": "Kelime engelleme sistemi etkin olmadığı için bu komutu kullanamazsınız",
+            "title": "Kelime engelleme filtresi temizlendi",
+            "description": "Kelime engelleme sistemi, filtreye yeni kelimeler eklenene kadar çalışmayacaktır."
+        }
     },
     "ping": {
         "discord_latency": "Discord gecikmesi",
@@ -121,5 +160,8 @@
         "message_response_speed": "Mesaj yanıt hızı",
         "apı_response_speed": "API yanıt hızı",
         "reply_message": "Sistemin gecikme bilgilerini görebilirsiniz"
+    },
+    "report": {
+        "submited": "Raporunuz gönderildi"
     }
 }

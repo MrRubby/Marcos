@@ -12,8 +12,8 @@ export default client => {
         channel.send({
             embeds: [new EmbedBuilder()
               .setAuthor({name:ban.user.tag,iconURL: ban.user.avatarURL()})
-              .setDescription(t("guildBanAdd.descripton", { ns: "common", lng: ban.guild.locale, user: ban.user}))
-              .addFields({name:t("guildBanAdd.addFields.reason", { ns: "common", lng: ban.guild.locale }) ,value:`\`\`\`${ban.reason}\`\`\``,inline:false})
+              .setDescription(t("guildBanRemove.description", { ns: "event", lng: ban.guildLocale, user: ban.user}))
+              .addFields({name:t("guildBanRemove.addFields.reason", { ns: "event", lng: ban.guildLocale }) ,value:`\`\`\`${ban.reason}\`\`\``,inline:false})
               .setColor("#2ACAEA")
               .setFooter({text:`${ban.guild.name}`})
               .setTimestamp()
