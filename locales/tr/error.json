@@ -2,5 +2,6 @@
     "missing_permissions": "Bu komutu kullanmak için `{{permrole}}` yetkisine sahip olmalısınız.`",
     "Unexpected_error": "Beklenmedik bir hata oluştu. Lütfen geliştirici ekibiyle iletişime geçin ve onlara bildirin.",
     "cooldown_error": "Bu komutu `{{cooldown}}` saniye sonra tekrar kullanabilirsiniz!",
-    "bot_missing_permissions": "Botun rolünün belirtilen rolün üzerinde olduğundan emin olduktan sonra tekrar deneyin. Sistemin düzgün çalışması için bu gereklidir."
+    "bot_missing_permissions": "Botun rolünün belirtilen rolün üzerinde olduğundan emin olduktan sonra tekrar deneyin. Sistemin düzgün çalışması için bu gereklidir.",
+    "botrole_position_error" : "Botun rolünü belirtilen rolün üzerine taşıyın ve komutu tekrar kullanın."
 }

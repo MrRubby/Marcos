@@ -16,6 +16,8 @@ export const data = {
         switch(SubCmd){
             case "set": {
                 let rol = interaction.options.getRole("role");
+                if (!interaction.guild.members.me.roles.highest.position < rol.position)
+                return interaction.reply({ content: t("botrole_position_error", { ns: "error", lng: interaction.locale}), ephemeral: true })
                 await database.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { banrole_id: rol.id, bansystem: true } }, { upsert: true })
                 .then(() => {
                     interaction.reply({ content: t("bansystem.set_succes", {lng: interaction.locale}) })
