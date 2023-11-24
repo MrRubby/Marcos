@@ -38,7 +38,7 @@ export default client => {
                 }, 500);
                 return;
             }
-        }
+        } else { return }
         if(lnkEngel){
             let blacklist = linkler;
             let foundInText = false;
@@ -57,7 +57,7 @@ export default client => {
                 }, 500);
                 return;
             }
-        }
+        } else { return }
         if(kelimeEngl){
                 
             let blacklist = bKlm;
@@ -78,7 +78,7 @@ export default client => {
                 }, 500);
                 return;
             }
-        }
+        } else { return }
     })
 
 }
