@@ -28,7 +28,7 @@ export const data = {
             case "reset": {
                 const { bansystem } = await database.findOne({ guild_id: interaction.guild.id }) || { bansystem: false };
                 if (!bansystem) return interaction.reply({ content: t("bansystem.error", {lng: interaction.locale}) });
-                await guilds_Schema.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { bansystem: false, banrole_id: null } }, { upsert: true })
+                await database.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { bansystem: false, banrole_id: null } }, { upsert: true })
                 .then(() => {
                     interaction.reply({ content: t("bansystem.reset_succes", {lng: interaction.locale}) })
                 }).catch(err => { 
