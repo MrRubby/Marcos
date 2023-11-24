@@ -2,12 +2,10 @@ import { ActivityType, EmbedBuilder } from "discord.js"
 import register_commands from "../utils/bot/register_commands.js"
 import { joinVoiceChannel  } from '@discordjs/voice'
 import { fetch, update, fetchAll, deleteOne } from "../utils/database/mongoose.js"
+import { createRequire } from 'node:module';
 
-const { default: CONFİG } = await import("../utils/bot/config.json", {
-    assert: {
-      type: "json",
-    },
-  });
+const require = createRequire(import.meta.url);
+const CONFİG = require('../utils/bot/config.json');
 
 export default client => {
 

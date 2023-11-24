@@ -1,15 +1,15 @@
-import { Client, Collection, GatewayIntentBits, Partials, } from "discord.js"
+import { Client, Collection, EmbedBuilder, GatewayIntentBits, Partials, } from "discord.js"
 import { readdirSync } from "fs"
 import mongoose from "mongoose"
 import i18next from "i18next"
 import translationBackend from "i18next-fs-backend"
 import * as database from "./utils/database/mongoose.js"
 import 'dotenv/config'
-
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const CONFİG = require('./utils/bot/config.json');
+const process = require("node:process");
 
 const client = new Client({
     partials: [
@@ -30,9 +30,22 @@ const client = new Client({
     ]
 })
 
-// Assignment (Görevlendirme
+// Assignment (Görevlendirme)
 client.commands = new Collection
 client.database = database
+
+// Initialize Anti Crash
+process.on("unhandledRejection", async (reason, promise) => {
+    console.log(`Unhandled Rejection at: `, promise, `reason:`, reason)
+})
+
+process.on("uncaughtException", (err) => {
+    console.log(`Uncaught Expection:`, err)
+})
+
+process.on("uncaughtExceptionMonitor", (err, origin) => {
+    console.log(`Uncaught Expection Monitor`, err, origin)
+})
 
 // Initialize Database (Veritabanı Başlatma)
 await mongoose.connect(CONFİG.BOT.MONGO || process.env.MONGO)

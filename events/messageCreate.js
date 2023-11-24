@@ -1,18 +1,11 @@
 import database from "../utils/database/guilds_Schema.js"
 import { PermissionsBitField } from "discord.js"
 import { t } from "i18next"
+import { createRequire } from 'node:module';
 
-const { default: kfrKelimeler } = await import("../utils/Filters/kfr.json", {
-    assert: {
-      type: "json",
-    },
-  });
-
-  const { default: linkler } = await import("../utils/Filters/lnks.json", {
-    assert: {
-      type: "json",
-    },
-  });
+const require = createRequire(import.meta.url);
+const kfrKelimeler = require('../utils/Filters/kfr.json');
+const linkler = require('../utils/Filters/lnks.json');
 
 export default client => {
 

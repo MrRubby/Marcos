@@ -2,11 +2,47 @@ import cooldown_control from "../utils/bot/cooldown_control.js"
 import { EmbedBuilder } from "discord.js"
 import { t } from "i18next"
 
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const CONFİG = require('../utils/bot/config.json');
+
 export default client => {
     const { embed } = client
-    client.on("interactionCreate", interaction => {
+    client.on("interactionCreate",async interaction => {
+
+        if (interaction.user.id !== "564545098017407007" && "564545098017407007") {
+            return interaction.reply({ content: "Only the developer team can use the commands in the demo system.", ephemeral: true})
+        }
 
         if (!interaction.isCommand() && interaction.isChannelSelectMenu() && interaction.isModalSubmit()) return
+
+        if (interaction.customId === "bugreport"){
+
+            const command = interaction.fields.getTextInputValue("command")
+            const description = interaction.fields.getTextInputValue("description")
+            const id = interaction.user.id
+            const member = interaction.member
+            const server = interaction.guild.id || "No server provided"
+
+            const channel = await interaction.client.channels.cache.get(CONFİG.LOG.REPORT)
+
+            const reportEmbed = new EmbedBuilder()
+            .setTitle(`Report from ${member}`)
+            .setFields(
+                { name: "User ID", value: `${id}`},
+                { name: "Member", value: `${member}`},
+                { name: "Server ID", value: `${server}`},
+                { name: "Command Reported", value: `${command}`},
+                { name: "Reported Description", value: `${description}`}
+            )
+            .setTimestamp()
+            .setFooter({ text: `Report Bug System`})
+
+            await channel.send({ embeds: [reportEmbed]}).catch(err => {})
+            await interaction.reply({ content: `Your report has been submited`, ephemeral: true })
+
+        }
 
         const command = client.commands.get(interaction.commandName)
 
