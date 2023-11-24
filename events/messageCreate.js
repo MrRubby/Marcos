@@ -15,10 +15,10 @@ export default client => {
         if(message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return; 
 
         const db = await database.findOne({ guild_id: message.guild.id })
-        const kfrEngel = db.kfrEngel || false
-        const kelimeEngl = db.kelimeEngl || false
-        const lnkEngel = db.lnkEngl || false
-        const bKlm = db.bKlm || null
+        const kfrEngel = db?.kfrEngel || false
+        const kelimeEngl = db?.kelimeEngl || false
+        const lnkEngel = db?.lnkEngl || false
+        const bKlm = db?.bKlm || null
 
         if(kfrEngel){
             let blacklist = kfrKelimeler;
