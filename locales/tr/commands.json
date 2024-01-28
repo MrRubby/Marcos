@@ -1,11 +1,11 @@
 {
     "bansystem" :  {
-        "set_succes" : "Ban sistemi başarıyla ayarlandı. {{yetkirole}} rolüne sahip kullanıcılar sadece ban komutunu kullanabilecek.",
+        "set_succes" : "Ban sistemi başarıyla ayarlandı. <@&{{yetkirole}}> rolüne sahip kullanıcılar sadece ban komutunu kullanabilecek.",
         "reset_succes" : "Ban sistemi başarıyla sıfırlandı. Sadece `Üyeleri Yasakla` yetkisine sahip kullanıcılar ban komutunu kullanabilecek.",
         "error": "Ban sistemi kapalıyken sıfırlama işlemi gerçekleştirilemez."
     },
     "kicksystem" : {
-        "set_succes" : "Kick sistemi başarıyla ayarlandı. {{yetkirole}} rolüne sahip kullanıcılar sadece kick komutunu kullanabilecek.",
+        "set_succes" : "Kick sistemi başarıyla ayarlandı. <@&{{yetkirole}}> rolüne sahip kullanıcılar sadece kick komutunu kullanabilecek.",
         "reset_succes" : "Kick sistemi başarıyla sıfırlandı. Sadece `Üyeleri At` yetkisine sahip kullanıcılar kick komutunu kullanabilecek.",
         "error" : "Kick sistemi kapalıyken sıfırlama işlemi gerçekleştirilemez."
     },

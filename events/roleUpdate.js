@@ -24,8 +24,6 @@ export default client => {
             {name : t("roleUpdate.addFields.roleName", { ns: "event", lng: newRole.guildLocale}) ,value:oldRole.name,inline:true},
             {name : t("roleUpdate.addFields.roleColor", { ns: "event", lng: newRole.guildLocale}) ,value:`${oldRole.hexColor}`,inline:true},
             {name : t("roleUpdate.addFields.roleIcon", { ns: "event", lng: newRole.guildLocale}) ,value:oldRole.iconURL() ? `${t("roleUpdate.view", { ns: "event", lng: newRole.guildLocale})}(${oldRole.iconURL()})` : t("roleUpdate.addFields.noneIcon", { ns: "event", lng: newRole.guildLocale}) ,inline:true},
-                
-  
             {name : t("roleUpdate.addFields.roleName2", { ns: "event", lng: newRole.guildLocale}) ,value:newRole.name,inline:true},
             {name : t("roleUpdate.addFields.roleColor2", { ns: "event", lng: newRole.guildLocale}) ,value:`${newRole.hexColor}`,inline:true},
             {name : t("roleUpdate.addFields.roleIcon2", { ns: "event", lng: newRole.guildLocale}) ,value:newRole.iconURL() ? `${t("roleUpdate.addFields.view", { ns: "event", lng: newRole.guildLocale})}(${newRole.iconURL()})` : t("roleUpdate.addFields.noneIcon", { ns: "event", lng: newRole.guildLocale}) ,inline:true},

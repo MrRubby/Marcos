@@ -1,0 +1,10 @@
+{
+    "AutoRole": "Komutunda rol sorgu ve embed gönderme",
+    "Kfr ve Lnk Engel": "Bildirimleri sadece EN dilinde atıyor",
+    "KlmEngel": "Kelime engellemesi yapmıyor",
+    "MessageLog": "Çalışmıyor",
+    "Modlog": "Ban atılında channel update logu atıyor",
+    "Unban": "ID terimi tanımlı değil",
+    "RoleUpdate": "Tüm rollerin logunu atıyor",
+    "Giriş-Çıkış": "Logunu atmıyor konsol hata çeviriyor"
+}

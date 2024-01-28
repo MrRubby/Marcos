@@ -24,13 +24,3 @@
         // interaction.guildLocale
     }
 }
-
-// autorole komutunda rol sorgu ve embed gönderisi
-// ban setting set komutunda embed yetkili rolünü belirtmiyor {{yetkili}} olarak gösteriyor
-// kfür engel ve lnk engel bildirisi OTO EN olarak atıyor
-// klmEngel kelime engeli yapmıyor
-// message log çalışmıyor
-// mod log ban atılınca chanel update logu atıyor ne alaka ise 
-// unban id terimi tanımlı değil
-// role update logunda tüm rollerin logunu atıyor
-// giriş çıkış loguda giriş logunu atmıyor connsole da hata çeviriyor

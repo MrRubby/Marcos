@@ -16,24 +16,23 @@ export const data = {
 
         switch(SubCmd){
             case "set": {
-
-                if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator))
-                return interaction.reply({ content: t("bot_missing_permissions", {ns: "error", lng: interaction.locale}) })
-                
-                await database.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { autorole_id: autoRole.id, autorolesystem: true }}, { upsert: true })
-                .then(() => {
-                    interaction.reply({ content: t("autorole.set_succes", {lng: interaction.locale}) })
-                }).catch(err => { 
-                    interaction.reply({ content: t("Unexpected_error", {ns: "common", lng: interaction.locale}) })
-                    console.log(err)
-                })
+                if (interaction.guild.members.me.roles.highest.position < autoRole.position)
+                {
+                    interaction.reply({ content: t("botrole_position_error", { ns: "error", lng: interaction.locale}), ephemeral: true })
+                } else {
+                    await database.findOneAndUpdate({ guild_id: interaction.guild.id }, { $set: { autorole_id: autoRole.id, autorolesystem: true }}, { upsert: true })
+                    .then(() => {
+                        interaction.reply({ content: t("autorole.set_succes", {lng: interaction.locale}) })
+                    }).catch(err => { 
+                        interaction.reply({ content: t("Unexpected_error", {ns: "common", lng: interaction.locale}) })
+                        console.log(err)
+                    })
+                }
                 break
             }
             case "reset": {
-
                 const { autorolesystem } = await database.findOne({ guild_id: interaction.guild.id }) || { autorolesystem: false }
                 if(!autorolesystem) return interaction.reply({ content: t("autorole.error", {lng: interaction.locale}) })
-
                 await database.findOneAndUpdate({ guild_id: interaction.guild.id}, { $set: { autorolesystem: false, autorole_id: null}}, { upsert: true} )
                 .then(() => {
                     interaction.reply({ content: t("autorole.res_succes", {lng: interaction.locale}) })
