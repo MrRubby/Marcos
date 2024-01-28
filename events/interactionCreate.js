@@ -9,11 +9,11 @@ const CONFİG = require('../utils/bot/config.json');
 
 export default client => {
     const { embed } = client
-    client.on("interactionCreate",async interaction => {
+    /*client.on("interactionCreate",async interaction => {
 
         if (interaction.user.id !== "564545098017407007" && "564545098017407007") {
             return interaction.reply({ content: "Only the developer team can use the commands in the demo system.", ephemeral: true})
-        }
+        }*/
 
         if (!interaction.isCommand() && interaction.isChannelSelectMenu() && interaction.isModalSubmit()) return
 
