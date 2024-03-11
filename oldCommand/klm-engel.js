@@ -1,6 +1,6 @@
 import { Embed, EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
-import database from "../../utils/database/guilds_Schema.js"
+import database from "../utils/database/guilds_Schema.js"
 
 export const data = {
     name: "word-block",

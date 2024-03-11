@@ -1,10 +1,10 @@
 import { EmbedBuilder, PermissionsBitField } from "discord.js"
 import { t } from "i18next"
-import database from "../../utils/database/guilds_Schema.js"
+import database from "../utils/database/guilds_Schema.js"
 
 export const data = {
-    name: "ad-block",
-    description: "determine the operating status of the anti-advertising system",
+    name: "blasphemy-block",
+    description: "You can determine the operating status of the anti-moulding system",
 
     async execute(interaction) {
 
@@ -15,20 +15,20 @@ export const data = {
 
         if(durum === "on") {
 
-            await database.updateOne({guild_id: interaction.guild.id}, {lnkEngl: true}, {upsert: true});
+            await database.updateOne({guild_id: interaction.guild.id}, {kfrEngel: true}, {upsert: true});
             const kfrOn = new EmbedBuilder()
-            .setTitle(t("lnkEngel.on.title", {lng: interaction.locale}))
-            .setDescription(t("lnkEngel.on.description", {lng: interaction.locale}))
+            .setTitle(t("kfrEngel.on.title", {lng: interaction.locale}))
+            .setDescription(t("kfrEngel.on.description", {lng: interaction.locale}))
             .setThumbnail(interaction.guild.iconURL())
             .setColor("Purple")
             interaction.reply({ embeds: [kfrOn]})
 
         } else if(durum === "off") {
 
-            await database.updateOne({guild_id: interaction.guild.id}, {lnkEngl: false}, {upsert: true});
+            await database.updateOne({guild_id: interaction.guild.id}, {kfrEngel: false}, {upsert: true});
             const kfrOff = new EmbedBuilder()
-            .setTitle(t("lnkEngel.off.title", {lng: interaction.locale}))
-            .setDescription(t("lnkEngel.off.description", {lng: interaction.locale}))
+            .setTitle(t("kfrEngel.off.title", {lng: interaction.locale}))
+            .setDescription(t("kfrEngel.off.description", {lng: interaction.locale}))
             .setThumbnail(interaction.guild.iconURL())
             .setColor("Purple")
             interaction.reply({ embeds: [kfrOff]})
@@ -48,7 +48,7 @@ export const slash_data = {
           type:1,
           options:[{
                 name:"status",
-                description:"You can switch the advertising blocking system on and off",
+                description:"You can switch the swearing blocking system on and off",
                 type:3,
                 required:true,
                 choices: [
